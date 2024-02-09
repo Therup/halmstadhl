@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/halmstadhl/static/css/main.cfbdce3e.css",
-    "main.js": "/halmstadhl/static/js/main.d3ee1c28.js",
+    "main.js": "/halmstadhl/static/js/main.cb53687f.js",
     "static/js/592.85de234e.chunk.js": "/halmstadhl/static/js/592.85de234e.chunk.js",
     "index.html": "/halmstadhl/index.html",
     "main.cfbdce3e.css.map": "/halmstadhl/static/css/main.cfbdce3e.css.map",
-    "main.d3ee1c28.js.map": "/halmstadhl/static/js/main.d3ee1c28.js.map",
+    "main.cb53687f.js.map": "/halmstadhl/static/js/main.cb53687f.js.map",
     "592.85de234e.chunk.js.map": "/halmstadhl/static/js/592.85de234e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cfbdce3e.css",
-    "static/js/main.d3ee1c28.js"
+    "static/js/main.cb53687f.js"
   ]
 }
