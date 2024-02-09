@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Box,
 } from "@material-ui/core";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PageTitle from "./utils/PageTitle";
@@ -41,30 +42,36 @@ const RandomStringGenerator: React.FC<Props> = () => {
   };
 
   return (
-    <div className="mui-theme">
+    <Box
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <PageTitle title="Lottning till cup" icon={<EmojiEventsIcon />} />
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <Box style={{ display: "flex", alignItems: "center" }}>
         <TextField
           type="text"
           value={inputString}
           onChange={handleInputChange}
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: "10px", backgroundColor: "white" }}
         />
         <Button
           onClick={handleAddString}
           variant="contained"
-          style={{ marginLeft: "10px" }}
+          style={{ marginLeft: "10px", backgroundColor: "white" }}
         >
           Add
         </Button>
         <Button
           onClick={handleRandomize}
           variant="contained"
-          style={{ marginLeft: "10px" }}
+          style={{ marginLeft: "10px", backgroundColor: "white" }}
         >
           Randomize
         </Button>
-      </div>
+      </Box>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {stringsArray.map((str, index) => (
           <div
@@ -113,7 +120,7 @@ const RandomStringGenerator: React.FC<Props> = () => {
           </Table>
         </TableContainer>
       </div>
-    </div>
+    </Box>
   );
 };
 

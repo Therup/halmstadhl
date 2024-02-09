@@ -11,7 +11,7 @@ const PageTitle = (props: { title: string; icon?: React.ReactNode }) => {
         alignItems: "flex-start",
       }}
     >
-      <Box style={{ marginRight: 5, marginTop: -4 }}>
+      <Box style={{ marginRight: 5, marginTop: 4 }}>
         {props.icon && <Icon>{props.icon}</Icon>}
       </Box>
       <Typography variant="h5" style={{ fontWeight: "bold" }}>

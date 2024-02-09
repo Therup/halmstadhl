@@ -33,7 +33,6 @@ const MatchItem = ({ matches, teams, onDeleteMatch }) => {
       }
     }
   };
-  console.log(matches.id);
 
   return (
     <Box style={{ maxWidth: "600px", width: "100%" }}>
@@ -42,7 +41,7 @@ const MatchItem = ({ matches, teams, onDeleteMatch }) => {
           <TableHead></TableHead>
           <TableBody>
             <TableRow>
-              <TableCell style={{ width: "33%" }}>
+              <TableCell style={{ width: "33%", padding: 5 }}>
                 {matches.homeTeam}-{matches.awayTeam}:{" "}
               </TableCell>
               <TableCell style={{ width: "33%" }}>

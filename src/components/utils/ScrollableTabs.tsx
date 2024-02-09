@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  AppBar,
-  Box,
-  Container,
-  Tab,
-  Tabs,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Box, Container, Tab, Tabs } from "@material-ui/core";
 import TeamTable from "../teamTable";
 import Matches from "../MatchList";
 import Admin from "../Admin";
 import RandomStringGenerator from "../RandomStringGenerator";
-import PageBox from "./PageBox";
+import ContactForm from "../Contact";
 
 interface Props {}
 
@@ -66,6 +59,7 @@ const ScrollableTabs: React.FC<Props> = () => {
           {value === 2 && <Matches />}
           {value === 3 && <Admin />}
           {value === 4 && <RandomStringGenerator />}
+          {value === 5 && <ContactForm />}
         </Box>
       </Container>
     </div>

@@ -73,6 +73,7 @@ const CreateMatchForm = () => {
         <Select
           style={{ width: "150px" }}
           value={homeTeam}
+          required
           onChange={(e) => setHomeTeam(e.target.value)}
         >
           <option value="">Välj hemmalag</option>
@@ -93,6 +94,7 @@ const CreateMatchForm = () => {
         <Select
           style={{ width: "150px" }}
           value={awayTeam}
+          required
           onChange={(e) => setAwayTeam(e.target.value)}
         >
           <option value="">Välj bortalag</option>

@@ -64,8 +64,9 @@ const Admin: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button
+            className="custom-button"
             variant="contained"
-            style={{ marginLeft: "10px" }}
+            style={{ marginTop: "20px", backgroundColor: "white" }}
             onClick={handleLogin}
           >
             Logga in

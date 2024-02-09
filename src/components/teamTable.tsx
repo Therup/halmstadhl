@@ -161,7 +161,9 @@ const TeamTable: React.FC = () => {
           <TableBody>
             {teams.map((team, index) => (
               <TableRow key={index}>
-                <TableCell padding="none">{team.name}</TableCell>
+                <TableCell padding="none" style={{ padding: 5 }}>
+                  {team.name}
+                </TableCell>
                 <TableCell padding="none">
                   {team.statistics.playedMatches}
                 </TableCell>

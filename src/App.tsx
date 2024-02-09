@@ -1,4 +1,3 @@
-import { start } from "repl";
 import "./App.css";
 import Header from "./components/utils/Header";
 import ScrollableTabs from "./components/utils/ScrollableTabs";

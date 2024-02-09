@@ -5,6 +5,7 @@ import {
   orderBy,
   query,
   doc,
+  addDoc,
 } from "firebase/firestore";
 import { firestore } from "./Firebase";
 
@@ -34,6 +35,7 @@ interface FirebaseService {
   getMatches(): Promise<Match[]>;
   getUsers(): Promise<User[]>;
   deleteMatch(matchId: string): Promise<void>;
+  addTeam(team: Team): Promise<void>;
 }
 
 export const FirebaseService: FirebaseService = {
@@ -119,6 +121,16 @@ export const FirebaseService: FirebaseService = {
       console.log("Match successfully deleted from Firestore.");
     } catch (error) {
       console.error("Error deleting match from Firestore:", error);
+      throw error;
+    }
+  },
+  async addTeam(team: Team) {
+    try {
+      const teamsCollection = collection(firestore, "Teams2");
+      await addDoc(teamsCollection, team); // Add the team to Firestore
+      console.log("Team successfully added to Firestore.");
+    } catch (error) {
+      console.error("Error adding team to Firestore:", error);
       throw error;
     }
   },
