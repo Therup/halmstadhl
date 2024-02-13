@@ -94,7 +94,7 @@ const TeamTable: React.FC = () => {
 
   const images = [
     {
-      url: "images/image1.jpg/",
+      url: "images/image1.jpg",
       alt: "Image 1",
       caption: "Description of Image 1",
     },
@@ -202,7 +202,7 @@ const TeamTable: React.FC = () => {
         </Table>
       </TableContainer>
       {user && user.isAdmin && <AddTeamForm />}
-      <Box>
+      <Box style={{ marginTop: "20px" }}>
         <Carousel images={images} />
       </Box>
     </Box>
