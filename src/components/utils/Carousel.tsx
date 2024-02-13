@@ -33,7 +33,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
             <img
               src="images\image1.jpg"
               alt={image.alt}
-              style={{ width: "100%" }}
+              style={{ width: "400px" }}
             />
             <Typography variant="subtitle1">{image.caption}</Typography>
           </Paper>
