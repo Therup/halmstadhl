@@ -18,15 +18,21 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const settings: SliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
   };
 
   return (
-    <Box sx={{ width: "400px" }}>
+    <Box
+      sx={{
+        width: "400px",
+        border: "3px solid rgb(0, 44, 81)",
+        borderRadius: "5px",
+      }}
+    >
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
