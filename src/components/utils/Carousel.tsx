@@ -31,7 +31,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         <div key={index}>
           <Paper elevation={3} sx={{ textAlign: "center" }}>
             <img
-              src="public/images/image1.jpg/"
+              src="images\image1.jpg"
               alt={image.alt}
               style={{ width: "100%" }}
             />
