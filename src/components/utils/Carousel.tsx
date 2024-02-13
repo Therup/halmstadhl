@@ -30,7 +30,11 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       {images.map((image, index) => (
         <div key={index}>
           <Paper elevation={3} sx={{ textAlign: "center" }}>
-            <img src={image.url} alt={image.alt} style={{ width: "100%" }} />
+            <img
+              src="public/images/image1.jpg/"
+              alt={image.alt}
+              style={{ width: "100%" }}
+            />
             <Typography variant="subtitle1">{image.caption}</Typography>
           </Paper>
         </div>
