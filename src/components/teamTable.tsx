@@ -166,10 +166,12 @@ const TeamTable: React.FC = () => {
               <TableRow key={index}>
                 <TableCell
                   padding="none"
-                  style={{ padding: 5, display: "flex" }}
+                  style={{ padding: 5, display: "flex", fontWeight: "bold" }}
                 >
-                  <TeamLogo teamName={team.name} />
-                  {team.name}
+                  <Box style={{ marginRight: "5px" }}>
+                    <TeamLogo teamName={team.name} />
+                  </Box>
+                  <Box style={{ marginTop: "5px" }}>{team.name}</Box>
                 </TableCell>
                 <TableCell padding="none">
                   {team.statistics.playedMatches}
