@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 interface Image {
   url: string;
@@ -26,20 +26,18 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   };
 
   return (
-    <Slider {...settings}>
-      {images.map((image, index) => (
-        <div key={index}>
-          <Paper elevation={3} sx={{ textAlign: "center" }}>
-            <img
-              src="images\image1.jpg"
-              alt={image.alt}
-              style={{ width: "400px" }}
-            />
-            <Typography variant="subtitle1">{image.caption}</Typography>
-          </Paper>
-        </div>
-      ))}
-    </Slider>
+    <Box sx={{ width: "400px" }}>
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <div key={index}>
+            <Paper elevation={3} sx={{ textAlign: "center" }}>
+              <img src={image.url} alt={image.alt} style={{ width: "400px" }} />
+              <Typography variant="subtitle1">{image.caption}</Typography>
+            </Paper>
+          </div>
+        ))}
+      </Slider>
+    </Box>
   );
 };
 
