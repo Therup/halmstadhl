@@ -28,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   return (
     <Box
       sx={{
-        width: "400px",
+        width: "300px",
         border: "3px solid rgb(0, 44, 81)",
         borderRadius: "5px",
       }}
@@ -37,7 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         {images.map((image, index) => (
           <div key={index}>
             <Paper elevation={3} sx={{ textAlign: "center" }}>
-              <img src={image.url} alt={image.alt} style={{ width: "400px" }} />
+              <img src={image.url} alt={image.alt} style={{ width: "350px" }} />
               <Typography variant="subtitle1">{image.caption}</Typography>
             </Paper>
           </div>

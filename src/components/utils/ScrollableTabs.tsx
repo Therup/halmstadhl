@@ -16,7 +16,7 @@ const ScrollableTabs: React.FC<Props> = () => {
   };
 
   return (
-    <div>
+    <Box>
       <AppBar
         position="static"
         className="scrollable-tabs-container"
@@ -34,7 +34,6 @@ const ScrollableTabs: React.FC<Props> = () => {
             style={{
               textAlign: "center",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
             }}
           >
@@ -67,7 +66,7 @@ const ScrollableTabs: React.FC<Props> = () => {
           {value === 5 && <ContactForm />}
         </Box>
       </Container>
-    </div>
+    </Box>
   );
 };
 
