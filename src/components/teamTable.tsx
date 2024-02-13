@@ -94,17 +94,17 @@ const TeamTable: React.FC = () => {
 
   const images = [
     {
-      url: "public/images/image1.jpeg",
+      url: "utils/carouselImages/image1.jpeg",
       alt: "Image 1",
       caption: "Description of Image 1",
     },
     {
-      url: "public/images/image2.jpeg",
+      url: "utils/carouselImages/image2.jpeg",
       alt: "Image 2",
       caption: "Description of Image 2",
     },
     {
-      url: "public/images/image3.jpeg",
+      url: "utils/carouselImages/image3.jpeg",
       alt: "Image 3",
       caption: "Description of Image 3",
     },
