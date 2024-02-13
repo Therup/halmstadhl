@@ -25,7 +25,7 @@ const MatchItem = ({ matches, teams, onDeleteMatch }) => {
   const handleDeleteMatch = async () => {
     if (user && user.isAdmin) {
       try {
-        const matchId = matches.id; // Konvertera seconds till en sträng
+        const matchId = matches.id;
         await FirebaseService.deleteMatch(matchId);
         console.log("Match deleted successfully.");
       } catch (error) {
@@ -41,14 +41,14 @@ const MatchItem = ({ matches, teams, onDeleteMatch }) => {
           <TableHead></TableHead>
           <TableBody>
             <TableRow>
-              <TableCell style={{ width: "33%", padding: 5 }}>
+              <TableCell padding="none" style={{ width: "33%", padding: 5 }}>
                 {matches.homeTeam}-{matches.awayTeam}:{" "}
               </TableCell>
-              <TableCell style={{ width: "33%" }}>
+              <TableCell padding="none" style={{ width: "33%" }}>
                 {matches.result?.homeScore || 0} -{" "}
                 {matches.result?.awayScore || 0}
               </TableCell>
-              <TableCell style={{ width: "33%" }}>
+              <TableCell padding="none" style={{ width: "33%" }}>
                 {formattedDate}{" "}
                 {user && user.isAdmin && (
                   <IconButton

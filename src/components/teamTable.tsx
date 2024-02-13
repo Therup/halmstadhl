@@ -16,6 +16,8 @@ import EqualizerIcon from "@mui/icons-material/Equalizer";
 import AddTeamForm from "./AddTeamForm";
 import { useUser } from "./utils/UserContext";
 import Carousel from "./utils/Carousel";
+import images from "../data/images.json";
+import TeamLogo from "./TeamLogo";
 
 const TeamTable: React.FC = () => {
   const { user } = useUser();
@@ -92,29 +94,6 @@ const TeamTable: React.FC = () => {
     team.statistics.points = team.statistics.wins * 3 + team.statistics.draws;
   };
 
-  const images = [
-    {
-      url: "images/image1.jpg",
-      alt: "Image 1",
-      caption: "Description of Image 1",
-    },
-    {
-      url: "images/image2.jpg",
-      alt: "Image 2",
-      caption: "Description of Image 2",
-    },
-    {
-      url: "images/image3.jpg",
-      alt: "Image 3",
-      caption: "Description of Image 3",
-    },
-    {
-      url: "images/image4.jpg",
-      alt: "Image 4",
-      caption: "Description of Image 3",
-    },
-  ];
-
   return (
     <Box
       className="mui-theme "
@@ -185,7 +164,11 @@ const TeamTable: React.FC = () => {
           <TableBody>
             {teams.map((team, index) => (
               <TableRow key={index}>
-                <TableCell padding="none" style={{ padding: 5 }}>
+                <TableCell
+                  padding="none"
+                  style={{ padding: 5, display: "flex" }}
+                >
+                  <TeamLogo teamName={team.name} />
                   {team.name}
                 </TableCell>
                 <TableCell padding="none">
