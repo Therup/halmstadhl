@@ -15,6 +15,7 @@ import PageTitle from "./utils/PageTitle";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import AddTeamForm from "./AddTeamForm";
 import { useUser } from "./utils/UserContext";
+import Carousel from "./utils/Carousel";
 
 const TeamTable: React.FC = () => {
   const { user } = useUser();
@@ -90,6 +91,24 @@ const TeamTable: React.FC = () => {
     }
     team.statistics.points = team.statistics.wins * 3 + team.statistics.draws;
   };
+
+  const images = [
+    {
+      url: "public/images/image1.jpeg",
+      alt: "Image 1",
+      caption: "Description of Image 1",
+    },
+    {
+      url: "public/images/image2.jpeg",
+      alt: "Image 2",
+      caption: "Description of Image 2",
+    },
+    {
+      url: "public/images/image3.jpeg",
+      alt: "Image 3",
+      caption: "Description of Image 3",
+    },
+  ];
 
   return (
     <Box
@@ -183,6 +202,9 @@ const TeamTable: React.FC = () => {
         </Table>
       </TableContainer>
       {user && user.isAdmin && <AddTeamForm />}
+      <Box>
+        <Carousel images={images} />
+      </Box>
     </Box>
   );
 };
