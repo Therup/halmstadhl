@@ -108,6 +108,11 @@ const TeamTable: React.FC = () => {
       alt: "Image 3",
       caption: "Description of Image 3",
     },
+    {
+      url: "images/image4.jpg",
+      alt: "Image 4",
+      caption: "Description of Image 3",
+    },
   ];
 
   return (
