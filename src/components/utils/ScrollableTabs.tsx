@@ -31,7 +31,12 @@ const ScrollableTabs: React.FC<Props> = () => {
             onChange={handleChange}
             variant="scrollable"
             scrollButtons="auto"
-            style={{ textAlign: "center" }}
+            style={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <Tab style={{ display: "inline-block" }} label="Tabell" />
             <Tab style={{ display: "inline-block" }} label="Kalender" />
