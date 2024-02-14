@@ -11,7 +11,8 @@ import {
 } from "@material-ui/core";
 import { useUser } from "./utils/UserContext";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { FirebaseService, Team, Match } from "../FirebaseService";
+import { FirebaseService } from "../FirebaseService";
+import TeamLogo from "./TeamLogo";
 
 const MatchItem = ({ matches, teams, onDeleteMatch }) => {
   const { user } = useUser();
@@ -41,8 +42,32 @@ const MatchItem = ({ matches, teams, onDeleteMatch }) => {
           <TableHead></TableHead>
           <TableBody>
             <TableRow>
-              <TableCell padding="none" style={{ width: "33%", padding: 5 }}>
-                {matches.homeTeam}-{matches.awayTeam}:{" "}
+              <TableCell
+                padding="none"
+                style={{ width: "33%", padding: 5, fontWeight: "bold" }}
+              >
+                <Box style={{ display: "flex" }}>
+                  <TeamLogo teamName={matches.homeTeam} />
+                  <Box
+                    style={{
+                      marginRight: "5px",
+                      marginLeft: "5px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    -
+                  </Box>
+                  <TeamLogo teamName={matches.awayTeam} />
+                  <Box
+                    style={{
+                      marginRight: "5px",
+                      marginLeft: "5px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    :
+                  </Box>
+                </Box>
               </TableCell>
               <TableCell padding="none" style={{ width: "33%" }}>
                 {matches.result?.homeScore || 0} -{" "}
