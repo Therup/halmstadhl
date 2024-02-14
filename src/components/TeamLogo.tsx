@@ -23,7 +23,7 @@ const TeamLogo: React.FC<TeamLogoProps> = ({ teamName }) => {
 
   return (
     <Avatar
-      sx={{ width: 32, height: 32 }}
+      sx={{ width: 40, height: 40 }}
       src={getTeamLogo()}
       alt={teamName}
       variant="square"

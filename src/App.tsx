@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/utils/Header";
-import ScrollableTabs from "./components/utils/ScrollableTabs";
+import ScrollableTabs from "./components/menu/ScrollableTabs";
 import { UserProvider } from "./components/utils/UserContext";
 
 function App() {

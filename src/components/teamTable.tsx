@@ -171,7 +171,7 @@ const TeamTable: React.FC = () => {
                   <Box style={{ marginRight: "5px" }}>
                     <TeamLogo teamName={team.name} />
                   </Box>
-                  <Box style={{ marginTop: "5px" }}>{team.name}</Box>
+                  <Box style={{ marginTop: "10px" }}>{team.name}</Box>
                 </TableCell>
                 <TableCell padding="none">
                   {team.statistics.playedMatches}

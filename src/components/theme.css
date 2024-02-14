@@ -25,3 +25,10 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 600px) {
+  /* Dölj Drawer när skärmbredden är mindre än eller lika med 600px */
+  .drawer {
+    display: block;
+  }
+}
