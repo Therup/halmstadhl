@@ -43,7 +43,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
           <Tab style={{ display: "inline-block" }} label="Admin" />
           <Tab
             style={{ display: "inline-block" }}
-            label="Nils Larsen throphy"
+            label="Niels Larsen throphy"
           />
           <Tab style={{ display: "inline-block" }} label="Kontakt" />
         </Tabs>

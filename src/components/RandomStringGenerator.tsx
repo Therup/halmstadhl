@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PageTitle from "./utils/PageTitle";
+import { useUser } from "./utils/UserContext";
 
 interface Props {}
 
@@ -22,6 +23,7 @@ const RandomStringGenerator: React.FC<Props> = () => {
   const [stringsArray, setStringsArray] = useState<string[]>([]);
   const [table1, setTable1] = useState<string[]>([]);
   const [table2, setTable2] = useState<string[]>([]);
+  const { user } = useUser();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputString(e.target.value);
@@ -42,85 +44,90 @@ const RandomStringGenerator: React.FC<Props> = () => {
   };
 
   return (
-    <Box
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <PageTitle title="Lottning till cup" icon={<EmojiEventsIcon />} />
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <TextField
-          type="text"
-          value={inputString}
-          onChange={handleInputChange}
-          style={{ marginRight: "10px", backgroundColor: "white" }}
-        />
-        <Button
-          onClick={handleAddString}
-          variant="contained"
-          style={{ marginLeft: "10px", backgroundColor: "white" }}
+    <>
+      {user && user.isAdmin && (
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          Add
-        </Button>
-        <Button
-          onClick={handleRandomize}
-          variant="contained"
-          style={{ marginLeft: "10px", backgroundColor: "white" }}
-        >
-          Randomize
-        </Button>
-      </Box>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {stringsArray.map((str, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid white",
-              padding: "5px",
-              margin: "5px",
-            }}
-          >
-            {str}
+          <PageTitle title="Lottning till cup" icon={<EmojiEventsIcon />} />
+
+          <Box style={{ display: "flex", alignItems: "center" }}>
+            <TextField
+              type="text"
+              value={inputString}
+              onChange={handleInputChange}
+              style={{ marginRight: "10px", backgroundColor: "white" }}
+            />
+            <Button
+              onClick={handleAddString}
+              variant="contained"
+              style={{ marginLeft: "10px", backgroundColor: "white" }}
+            >
+              Add
+            </Button>
+            <Button
+              onClick={handleRandomize}
+              variant="contained"
+              style={{ marginLeft: "10px", backgroundColor: "white" }}
+            >
+              Randomize
+            </Button>
+          </Box>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {stringsArray.map((str, index) => (
+              <div
+                key={index}
+                style={{
+                  border: "1px solid white",
+                  padding: "5px",
+                  margin: "5px",
+                }}
+              >
+                {str}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <TableContainer component={Paper} style={{ margin: "5px" }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Table 1</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {table1.map((str, index) => (
-                <TableRow key={index}>
-                  <TableCell>{str}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TableContainer component={Paper} style={{ margin: "5px" }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Table 2</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {table2.map((str, index) => (
-                <TableRow key={index}>
-                  <TableCell>{str}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    </Box>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <TableContainer component={Paper} style={{ margin: "5px" }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Table 1</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {table1.map((str, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{str}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TableContainer component={Paper} style={{ margin: "5px" }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Table 2</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {table2.map((str, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{str}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        </Box>
+      )}
+    </>
   );
 };
 
