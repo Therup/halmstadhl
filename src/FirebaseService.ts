@@ -6,6 +6,7 @@ import {
   query,
   doc,
   addDoc,
+  Timestamp,
 } from "firebase/firestore";
 import { firestore } from "./Firebase";
 
@@ -23,7 +24,7 @@ export interface Match {
   id: string;
   awayTeam: string;
   homeTeam: string;
-  date: any;
+  date: Timestamp;
   result: {
     awayScore: number;
     homeScore: number;

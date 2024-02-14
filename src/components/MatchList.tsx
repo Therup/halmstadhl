@@ -34,7 +34,7 @@ const Matches = () => {
   }, []);
 
   const handleDeleteMatch = (matchId: string) => {
-    setMatches(matches.filter((match) => match.date !== matchId));
+    setMatches(matches.filter((match) => match.id !== matchId));
   };
 
   return (
@@ -81,7 +81,7 @@ const Matches = () => {
       </Box>
       {matches.map((match) => (
         <MatchItem
-          key={match.date}
+          key={match.id}
           matches={match}
           teams={teams}
           onDeleteMatch={handleDeleteMatch} // Skicka funktionen för att radera matchen
