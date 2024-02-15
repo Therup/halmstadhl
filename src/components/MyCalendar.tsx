@@ -3,9 +3,10 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Match } from "../FirebaseService";
-import TeamLogo from "./TeamLogo"; // Importera TeamLogo-komponenten
-import { Box } from "@material-ui/core";
+import TeamLogo from "./TeamLogo";
+import { Box, useMediaQuery } from "@material-ui/core";
 import EventModal from "./utils/EventModal";
+import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 
 const localizer = momentLocalizer(moment);
 
@@ -16,6 +17,7 @@ interface CalendarProps {
 const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   const [events, setEvents] = useState<any[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const handleEventClick = (event: any) => {
     setSelectedEvent(event);
@@ -27,14 +29,30 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
 
   const renderEventTitle = (match: Match) => {
     return (
-      <div style={{ display: "flex" }}>
-        <TeamLogo teamName={match.homeTeam} />
-        <Box
-          style={{ marginLeft: "5px", marginRight: "5px", marginTop: "10px" }}
-        >
-          vs
-        </Box>
-        <TeamLogo teamName={match.awayTeam} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {isMobile ? (
+          <SportsHockeyIcon fontSize="large" />
+        ) : (
+          <>
+            <TeamLogo teamName={match.homeTeam} />
+            <Box
+              style={{
+                marginLeft: "5px",
+                marginRight: "5px",
+                marginTop: "10px",
+              }}
+            >
+              vs
+            </Box>
+            <TeamLogo teamName={match.awayTeam} />
+          </>
+        )}
       </div>
     );
   };
@@ -62,11 +80,12 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   return (
     <div style={{ height: 500, margin: "5px auto" }}>
       <Calendar
+        views={["month"]}
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ width: "100%" }}
+        style={{ width: "100%", backgroundColor: "white" }}
         onSelectEvent={handleEventClick}
       />
       <EventModal
