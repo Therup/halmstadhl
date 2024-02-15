@@ -14,7 +14,20 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { FirebaseService } from "../FirebaseService";
 import TeamLogo from "./TeamLogo";
 
-const MatchItem = ({ matches, teams, onDeleteMatch }) => {
+interface MatchProps {
+  matches: {
+    homeTeam: string;
+    awayTeam: string;
+    awayScore?: number;
+    homeScore?: number;
+    date: any;
+    id: string;
+    result: any;
+  };
+  teams: any;
+  onDeleteMatch: any;
+}
+const MatchItem: React.FC<MatchProps> = ({ matches }) => {
   const { user } = useUser();
   const date = matches.date.toDate();
   const formattedDate = date.toLocaleDateString("se-SE", {

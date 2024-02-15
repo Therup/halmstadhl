@@ -17,8 +17,10 @@ const EventModal: React.FC<EventModalProps> = ({
   if (!eventInfo) {
     return null; // Returnera ingenting om eventInfo är null
   }
-  const { homeScore, awayScore, date, homeTeam, awayTeam } = eventInfo;
-  console.log(eventInfo);
+  const { homeScore, awayScore, homeTeam, awayTeam } = eventInfo;
+  const date = eventInfo.start;
+  const formattedDate = date.toISOString().split("T")[0];
+  //console.log(formattedDate);
 
   return (
     <Modal open={isOpen} onClose={onClose}>
@@ -35,7 +37,7 @@ const EventModal: React.FC<EventModalProps> = ({
           p: 4,
         }}
       >
-        <Typography variant="h5">
+        <Typography variant="h5" style={{ textAlign: "center" }}>
           {homeTeam} vs {awayTeam}
         </Typography>
         <Box
@@ -51,12 +53,17 @@ const EventModal: React.FC<EventModalProps> = ({
             {homeScore}
           </Typography>
           <Typography variant="body1" fontWeight="bold">
+            -
+          </Typography>
+          <Typography variant="body1" fontWeight="bold">
             {awayScore}
           </Typography>
           <TeamLogo teamName={awayTeam} />
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
-          <Typography variant="body1">Datum: {date}</Typography>
+          <Typography variant="body1" style={{ textAlign: "center" }}>
+            Datum: {formattedDate}
+          </Typography>
         </Box>
         <Box
           sx={{
@@ -69,8 +76,8 @@ const EventModal: React.FC<EventModalProps> = ({
         <Button
           onClick={onClose}
           variant="contained"
-          color="primary"
           sx={{ mt: 2 }}
+          style={{ backgroundColor: "white", color: "black" }}
         >
           Stäng
         </Button>
