@@ -67,7 +67,7 @@ const EventModal: React.FC<EventModalProps> = ({
             mt: 2,
           }}
         >
-          <TeamLogo teamName={homeTeam} size={100} />
+          <TeamLogo teamName={homeTeam} size={"100px"} />
           <Typography variant="body1" fontWeight="bold">
             {homeScore}
           </Typography>
@@ -77,7 +77,7 @@ const EventModal: React.FC<EventModalProps> = ({
           <Typography variant="body1" fontWeight="bold">
             {awayScore}
           </Typography>
-          <TeamLogo teamName={awayTeam} size={100} />
+          <TeamLogo teamName={awayTeam} size={"100px"} />
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
           <Typography variant="body1" style={{ textAlign: "center" }}>
@@ -93,7 +93,7 @@ const EventModal: React.FC<EventModalProps> = ({
               mt: 2,
             }}
           >
-            <TeamLogo teamName={homeTeam} size={50} />
+            <TeamLogo teamName={homeTeam} size={"50px"} />
             <TextField
               type="number"
               label="Home Score"
@@ -109,7 +109,7 @@ const EventModal: React.FC<EventModalProps> = ({
               value={newAwayScore}
               onChange={(e) => setNewAwayScore(Number(e.target.value))}
             />
-            <TeamLogo teamName={awayTeam} size={50} />
+            <TeamLogo teamName={awayTeam} size={"50px"} />
           </Box>
         )}
         <Box

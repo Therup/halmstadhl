@@ -10,7 +10,7 @@ interface Logo {
 
 interface TeamLogoProps {
   teamName: string;
-  size: number
+  size: string;
 }
 
 const TeamLogo: React.FC<TeamLogoProps> = ({ teamName, size }) => {
@@ -24,7 +24,7 @@ const TeamLogo: React.FC<TeamLogoProps> = ({ teamName, size }) => {
 
   return (
     <Avatar
-      sx={{ width: {size}, height: {size} }}
+      sx={{ width: size, height: size }}
       src={getTeamLogo()}
       alt={teamName}
       variant="square"
