@@ -96,18 +96,24 @@ const EventModal: React.FC<EventModalProps> = ({
             <TeamLogo teamName={homeTeam} size={"50px"} />
             <TextField
               type="number"
-              label="Home Score"
+              label="Mål hemmalag"
               value={newHomeScore}
               onChange={(e) => setNewHomeScore(Number(e.target.value))}
+              style={{ margin: "10px" }}
             />
-            <Typography variant="body1" fontWeight="bold">
+            <Typography
+              variant="body1"
+              fontWeight="bold"
+              style={{ margin: "10px" }}
+            >
               -
             </Typography>
             <TextField
               type="number"
-              label="Away Score"
+              label="Mål bortalag"
               value={newAwayScore}
               onChange={(e) => setNewAwayScore(Number(e.target.value))}
+              style={{ margin: "10px" }}
             />
             <TeamLogo teamName={awayTeam} size={"50px"} />
           </Box>
