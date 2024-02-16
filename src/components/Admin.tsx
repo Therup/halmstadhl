@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FirebaseService } from "../FirebaseService";
 import { useUser } from "./utils/UserContext";
-import CreateMatchForm from "./CreateMatchForm";
 import "./theme.css";
 import { Box, Button, TextField } from "@material-ui/core";
 import PageTitle from "./utils/PageTitle";
@@ -73,9 +72,6 @@ const Admin: React.FC = () => {
           </Button>
         </>
       )}
-      <Box style={{ marginTop: "30px" }}>
-        {user && user.isAdmin && <CreateMatchForm></CreateMatchForm>}
-      </Box>
     </Box>
   );
 };

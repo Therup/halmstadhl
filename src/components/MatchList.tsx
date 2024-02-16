@@ -22,8 +22,9 @@ const Matches = () => {
     const fetchData = async () => {
       try {
         const matchesData = await FirebaseService.getMatches();
+        const playedMatches = matchesData.filter((match) => match.isPlayed);
         const teamsData = await FirebaseService.getTeams();
-        setMatches(matchesData);
+        setMatches(playedMatches);
         setTeams(teamsData);
       } catch (error) {
         console.error("Fel vid hämtning av matchdata:", error);

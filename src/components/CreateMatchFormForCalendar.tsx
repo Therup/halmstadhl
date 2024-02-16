@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Button, TextField, Select, InputLabel, Box } from "@material-ui/core";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
-import { Team } from "../FirebaseService";
-import { Button, TextField, Select, InputLabel, Box } from "@material-ui/core";
-import PageTitle from "./utils/PageTitle";
-import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
+import { Team, Match } from "../FirebaseService";
 
-const CreateMatchForm = () => {
-  const [homeTeam, setHomeTeam] = useState<any>("");
-  const [awayTeam, setAwayTeam] = useState<any>("");
-  const [homeScore, setHomeScore] = useState(0);
-  const [awayScore, setAwayScore] = useState(0);
+const MatchForm: React.FC = ({}) => {
+  const [homeTeam, setHomeTeam] = useState<string>("");
+  const [awayTeam, setAwayTeam] = useState<string>("");
+  const [homeScore, setHomeScore] = useState<number>(0);
+  const [awayScore, setAwayScore] = useState<number>(0);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [date, setDate] = useState("");
+
+  const handleHomeTeamChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+    const value = e.target.value as string;
+    setHomeTeam(value);
+  };
+
+  const handleAwayTeamChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+    const value = e.target.value as string;
+    setAwayTeam(value);
+  };
 
   useEffect(() => {
     const fetchTeamData = async () => {
@@ -31,21 +40,32 @@ const CreateMatchForm = () => {
 
       setTeams(teamData);
     };
-
     fetchTeamData();
   }, []);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const matchData = {
+    const currentDate = new Date();
+    const selectedDate = new Date(date); // Använd det valda datumet från formuläret
+    selectedDate.setHours(0, 0, 0, 0); // Nollställ tiden för att matcha datumet
+
+    const isFutureDate = selectedDate > currentDate;
+    const isPlayed = !isFutureDate;
+
+    const timestamp = Timestamp.fromDate(selectedDate);
+    console.log(timestamp);
+
+    const matchData: Match = {
+      id: "",
       homeTeam,
       awayTeam,
-      date: Timestamp.fromDate(new Date()),
+      date: timestamp,
       result: {
         homeScore: Number(homeScore),
         awayScore: Number(awayScore),
       },
+      isPlayed,
     };
 
     const db = getFirestore();
@@ -59,22 +79,14 @@ const CreateMatchForm = () => {
   };
 
   return (
-    <Box
-      className="mui-theme"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <PageTitle title="Ny match" icon={<SportsHockeyIcon />} />
+    <Box mt={2}>
       <form onSubmit={handleSubmit}>
         <InputLabel>Hemmalag </InputLabel>
         <Select
           style={{ width: "150px" }}
           value={homeTeam}
           required
-          onChange={(e) => setHomeTeam(e.target.value)}
+          onChange={handleHomeTeamChange}
         >
           <option value="">Välj hemmalag</option>
           {teams.map((team) => (
@@ -95,7 +107,7 @@ const CreateMatchForm = () => {
           style={{ width: "150px" }}
           value={awayTeam}
           required
-          onChange={(e) => setAwayTeam(e.target.value)}
+          onChange={handleAwayTeamChange}
         >
           <option value="">Välj bortalag</option>
           {teams.map((team) => (
@@ -106,23 +118,37 @@ const CreateMatchForm = () => {
         </Select>
 
         <TextField
-          placeholder="Mål hemmalag"
+          placeholder="Mål bortalaglag"
           type="number"
           value={awayScore}
           onChange={(e) => setAwayScore(Number(e.target.value))}
         />
-        <Box style={{ marginTop: "10px" }}>
-          <Button
-            variant="contained"
-            className="button"
-            type="submit"
-            style={{ backgroundColor: "white" }}
-          >
-            Skapa match
-          </Button>
-        </Box>
+        <TextField
+          label="Datum"
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          style={{
+            marginTop: "10px",
+            padding: "5px",
+            backgroundColor: "white",
+          }}
+        >
+          Skapa Match
+        </Button>
       </form>
     </Box>
   );
 };
-export default CreateMatchForm;
+
+export default MatchForm;

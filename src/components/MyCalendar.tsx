@@ -18,6 +18,7 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   const [events, setEvents] = useState<any[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const isMobile = useMediaQuery("(max-width:600px)");
+  const today = new Date();
 
   const handleEventClick = (event: any) => {
     setSelectedEvent(event);
@@ -27,40 +28,9 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
     setSelectedEvent(null);
   };
 
-  const renderEventTitle = (match: Match) => {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {isMobile ? (
-          <SportsHockeyIcon fontSize="large" />
-        ) : (
-          <>
-            <TeamLogo teamName={match.homeTeam} />
-            <Box
-              style={{
-                marginLeft: "5px",
-                marginRight: "5px",
-                marginTop: "10px",
-              }}
-            >
-              vs
-            </Box>
-            <TeamLogo teamName={match.awayTeam} />
-          </>
-        )}
-      </div>
-    );
-  };
-
   useEffect(() => {
     const eventsData = matches.map((match) => ({
       id: match.id,
-      title: renderEventTitle(match), // Använd renderEventTitle för att generera JSX för titeln
       start: new Date(match.date.seconds * 1000),
       end: new Date(match.date.seconds * 1000),
       allDay: true,
@@ -68,17 +38,13 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
       awayTeam: match.awayTeam,
       homeScore: match.result.homeScore,
       awayScore: match.result.awayScore,
-      backgroundColor:
-        match.result.homeScore !== null && match.result.awayScore !== null
-          ? "#7cb342"
-          : "#2196f3",
     }));
     setEvents(eventsData);
     // eslint-disable-next-line
   }, [matches]);
 
   return (
-    <div style={{ height: 500, margin: "5px auto" }}>
+    <div style={{ height: 400, margin: "5px auto" }}>
       <Calendar
         views={["month"]}
         localizer={localizer}
@@ -87,12 +53,49 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
         endAccessor="end"
         style={{ width: "100%", backgroundColor: "white" }}
         onSelectEvent={handleEventClick}
+        components={{
+          event: EventComponent, // Anpassad komponent för varje händelse
+        }}
       />
       <EventModal
         isOpen={selectedEvent !== null}
         onClose={handleCloseModal}
         eventInfo={selectedEvent}
       />
+    </div>
+  );
+};
+
+const EventComponent: React.FC<any> = ({ event }) => {
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const { homeTeam, awayTeam, result, start } = event;
+  const isFuture = moment(start).isAfter(moment(), "day"); // Kontrollera om datumet är i framtiden
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: isFuture ? "rgb(4, 128, 83)" : "rgb(0, 44, 81)",
+      }}
+    >
+      {isMobile ? (
+        <SportsHockeyIcon fontSize="large" />
+      ) : (
+        <>
+          <TeamLogo teamName={event.homeTeam} />
+          <Box
+            style={{
+              marginLeft: "5px",
+              marginRight: "5px",
+            }}
+          >
+            vs
+          </Box>
+          <TeamLogo teamName={event.awayTeam} />
+        </>
+      )}
     </div>
   );
 };

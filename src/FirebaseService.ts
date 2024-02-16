@@ -7,6 +7,7 @@ import {
   doc,
   addDoc,
   Timestamp,
+  updateDoc,
 } from "firebase/firestore";
 import { firestore } from "./Firebase";
 
@@ -25,6 +26,7 @@ export interface Match {
   awayTeam: string;
   homeTeam: string;
   date: Timestamp;
+  isPlayed: boolean;
   result: {
     awayScore: number;
     homeScore: number;
@@ -37,6 +39,8 @@ interface FirebaseService {
   getUsers(): Promise<User[]>;
   deleteMatch(matchId: string): Promise<void>;
   addTeam(team: Team): Promise<void>;
+  addMatch(match: Match): Promise<void>;
+  updateMatch(matchId: string, updatedMatchData: Partial<Match>): Promise<void>;
 }
 // eslint-disable-next-line
 export const FirebaseService: FirebaseService = {
@@ -77,6 +81,7 @@ export const FirebaseService: FirebaseService = {
           awayTeam: data.awayTeam || "",
           homeTeam: data.homeTeam || "",
           date: data.date || null,
+          isPlayed: data.isPlayed || false,
           result: {
             awayScore: data.result?.awayScore || 0,
             homeScore: data.result?.homeScore || 0,
@@ -132,6 +137,29 @@ export const FirebaseService: FirebaseService = {
       console.log("Team successfully added to Firestore.");
     } catch (error) {
       console.error("Error adding team to Firestore:", error);
+      throw error;
+    }
+  },
+  async addMatch(match: Match) {
+    try {
+      const matchesCollection = collection(firestore, "matches2");
+      await addDoc(matchesCollection, match); // Lägg till matchen i Firestore
+      console.log("Match successfully added to Firestore.");
+    } catch (error) {
+      console.error("Error adding match to Firestore:", error);
+      throw error;
+    }
+  },
+  async updateMatch(
+    matchId: string,
+    updatedMatchData: Partial<Match>
+  ): Promise<void> {
+    try {
+      const matchDocRef = doc(firestore, "matches2", matchId);
+      await updateDoc(matchDocRef, updatedMatchData);
+      console.log("Match successfully updated in Firestore.");
+    } catch (error) {
+      console.error("Error updating match in Firestore:", error);
       throw error;
     }
   },

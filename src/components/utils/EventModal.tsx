@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Box, Typography, Button } from "@mui/material";
 import TeamLogo from "../TeamLogo";
+import { FirebaseService } from "../../FirebaseService";
+import { TextField } from "@material-ui/core";
+import { useUser } from "./UserContext";
 
 interface EventModalProps {
   isOpen: boolean;
@@ -13,12 +16,30 @@ const EventModal: React.FC<EventModalProps> = ({
   onClose,
   eventInfo,
 }) => {
+  const [newHomeScore, setNewHomeScore] = useState<number>(0);
+  const [newAwayScore, setNewAwayScore] = useState<number>(0);
+  const { user } = useUser();
   if (!eventInfo) {
     return null; // Returnera ingenting om eventInfo är null
   }
-  const { homeScore, awayScore, homeTeam, awayTeam } = eventInfo;
+  const { id, homeScore, awayScore, homeTeam, awayTeam } = eventInfo;
   const date = eventInfo.start;
   const formattedDate = date.toISOString().split("T")[0];
+
+  const handleUpdateMatch = async () => {
+    try {
+      await FirebaseService.updateMatch(id, {
+        result: {
+          homeScore: newHomeScore,
+          awayScore: newAwayScore,
+        },
+        isPlayed: true,
+      });
+      onClose(); // Stäng modalen efter att matchen har uppdaterats
+    } catch (error) {
+      console.error("Error updating match:", error);
+    }
+  };
 
   return (
     <Modal open={isOpen} onClose={onClose}>
@@ -63,6 +84,34 @@ const EventModal: React.FC<EventModalProps> = ({
             Datum: {formattedDate}
           </Typography>
         </Box>
+        {user && user.isAdmin && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mt: 2,
+            }}
+          >
+            <TeamLogo teamName={homeTeam} />
+            <TextField
+              type="number"
+              label="Home Score"
+              value={newHomeScore}
+              onChange={(e) => setNewHomeScore(Number(e.target.value))}
+            />
+            <Typography variant="body1" fontWeight="bold">
+              -
+            </Typography>
+            <TextField
+              type="number"
+              label="Away Score"
+              value={newAwayScore}
+              onChange={(e) => setNewAwayScore(Number(e.target.value))}
+            />
+            <TeamLogo teamName={awayTeam} />
+          </Box>
+        )}
         <Box
           sx={{
             display: "flex",
@@ -70,15 +119,28 @@ const EventModal: React.FC<EventModalProps> = ({
             justifyContent: "space-between",
             mt: 2,
           }}
-        ></Box>
-        <Button
-          onClick={onClose}
-          variant="contained"
-          sx={{ mt: 2 }}
-          style={{ backgroundColor: "white", color: "black" }}
         >
-          Stäng
-        </Button>
+          {/* Knapp för att uppdatera matchen */}
+          {user && user.isAdmin && (
+            <Button
+              onClick={handleUpdateMatch}
+              variant="contained"
+              sx={{ mt: 2 }}
+              style={{ backgroundColor: "green", color: "white" }}
+            >
+              Uppdatera Match
+            </Button>
+          )}
+          {/* Knapp för att stänga modalen */}
+          <Button
+            onClick={onClose}
+            variant="contained"
+            sx={{ mt: 2 }}
+            style={{ backgroundColor: "white", color: "black" }}
+          >
+            Stäng
+          </Button>
+        </Box>
       </Box>
     </Modal>
   );

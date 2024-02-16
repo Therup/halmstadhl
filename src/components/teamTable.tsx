@@ -27,9 +27,12 @@ const TeamTable: React.FC = () => {
     const fetchData = async () => {
       try {
         const matchesData = await FirebaseService.getMatches();
-
         const teamStatisticsMap = new Map<string, any>();
-        matchesData.forEach((match) => {
+
+        // Filtrera bort matcher där isPlayed är false
+        const playedMatches = matchesData.filter((match) => match.isPlayed);
+
+        playedMatches.forEach((match) => {
           updateTeamStatistics(
             teamStatisticsMap,
             match.homeTeam,

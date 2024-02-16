@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { FirebaseService, Match } from "../FirebaseService";
+import MatchForm from "./CreateMatchFormForCalendar";
 
 const CalendarPage: React.FC = () => {
   const [matches, setMatches] = useState<Match[]>([]);
@@ -21,6 +22,7 @@ const CalendarPage: React.FC = () => {
   return (
     <div style={{ paddingTop: "30px" }}>
       <MyCalendar matches={matches} />
+      <MatchForm />
     </div>
   );
 };
