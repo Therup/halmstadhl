@@ -65,7 +65,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                     style={{
                       marginRight: "5px",
                       marginLeft: "5px",
-                      marginTop: "10px",
+                      marginTop: "15px",
                     }}
                   >
                     -
@@ -75,7 +75,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                     style={{
                       marginRight: "5px",
                       marginLeft: "5px",
-                      marginTop: "10px",
+                      marginTop: "15px",
                     }}
                   >
                     :

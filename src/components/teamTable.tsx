@@ -169,12 +169,14 @@ const TeamTable: React.FC = () => {
               <TableRow key={index}>
                 <TableCell
                   padding="none"
-                  style={{ padding: 5, display: "flex", fontWeight: "bold" }}
+                  style={{ padding: 5, fontWeight: "bold" }}
                 >
-                  <Box style={{ marginRight: "5px" }}>
-                    <TeamLogo teamName={team.name} />
+                  <Box style={{ display: "flex" }}>
+                    <Box style={{ marginRight: "5px" }}>
+                      <TeamLogo teamName={team.name} />
+                    </Box>
+                    <Box style={{ marginTop: "15px" }}>{team.name}</Box>
                   </Box>
-                  <Box style={{ marginTop: "10px" }}>{team.name}</Box>
                 </TableCell>
                 <TableCell padding="none">
                   {team.statistics.playedMatches}
