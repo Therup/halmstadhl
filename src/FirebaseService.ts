@@ -38,7 +38,7 @@ interface FirebaseService {
   deleteMatch(matchId: string): Promise<void>;
   addTeam(team: Team): Promise<void>;
 }
-
+// eslint-disable-next-line
 export const FirebaseService: FirebaseService = {
   async getTeams() {
     try {

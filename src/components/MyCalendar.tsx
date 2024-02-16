@@ -73,8 +73,8 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
           ? "#7cb342"
           : "#2196f3",
     }));
-
     setEvents(eventsData);
+    // eslint-disable-next-line
   }, [matches]);
 
   return (

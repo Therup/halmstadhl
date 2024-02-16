@@ -1,4 +1,3 @@
-// EventModal.tsx
 import React from "react";
 import { Modal, Box, Typography, Button } from "@mui/material";
 import TeamLogo from "../TeamLogo";
@@ -20,7 +19,6 @@ const EventModal: React.FC<EventModalProps> = ({
   const { homeScore, awayScore, homeTeam, awayTeam } = eventInfo;
   const date = eventInfo.start;
   const formattedDate = date.toISOString().split("T")[0];
-  //console.log(formattedDate);
 
   return (
     <Modal open={isOpen} onClose={onClose}>
