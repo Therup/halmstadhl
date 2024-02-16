@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/halmstadhl/static/css/main.d896b407.css",
-    "main.js": "/halmstadhl/static/js/main.28530408.js",
+    "main.js": "/halmstadhl/static/js/main.c3d4849e.js",
     "static/js/592.85de234e.chunk.js": "/halmstadhl/static/js/592.85de234e.chunk.js",
     "static/media/slick.svg": "/halmstadhl/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/halmstadhl/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -9,11 +9,11 @@
     "static/media/slick.woff": "/halmstadhl/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/halmstadhl/index.html",
     "main.d896b407.css.map": "/halmstadhl/static/css/main.d896b407.css.map",
-    "main.28530408.js.map": "/halmstadhl/static/js/main.28530408.js.map",
+    "main.c3d4849e.js.map": "/halmstadhl/static/js/main.c3d4849e.js.map",
     "592.85de234e.chunk.js.map": "/halmstadhl/static/js/592.85de234e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d896b407.css",
-    "static/js/main.28530408.js"
+    "static/js/main.c3d4849e.js"
   ]
 }
