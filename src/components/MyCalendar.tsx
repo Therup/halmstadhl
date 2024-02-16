@@ -18,6 +18,14 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   const [events, setEvents] = useState<any[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
+  const eventStyleGetter = () => {
+    return {
+      style: {
+        backgroundColor: "transparent", // Set the background color here
+      },
+    };
+  };
+
   const handleEventClick = (event: any) => {
     setSelectedEvent(event);
   };
@@ -49,6 +57,7 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
         events={events}
         startAccessor="start"
         endAccessor="end"
+        eventPropGetter={eventStyleGetter}
         style={{ width: "100%", backgroundColor: "white" }}
         onSelectEvent={handleEventClick}
         components={{
@@ -73,13 +82,17 @@ const EventComponent: React.FC<any> = ({ event }) => {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
         alignItems: "center",
-        backgroundColor: isFuture ? "rgb(4, 128, 83)" : "rgb(0, 44, 81)",
+        justifyContent: "space-between",
+        color: "black",
+        border: isFuture ? "3px solid green" : "3px solid rgb(0, 44, 81)",
+        borderRadius: "5px",
       }}
     >
       {isMobile ? (
-        <SportsHockeyIcon fontSize="large" />
+        <Box>
+          <SportsHockeyIcon fontSize="large" />
+        </Box>
       ) : (
         <>
           <TeamLogo teamName={event.homeTeam} />
