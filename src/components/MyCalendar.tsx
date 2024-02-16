@@ -17,8 +17,6 @@ interface CalendarProps {
 const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   const [events, setEvents] = useState<any[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
-  const isMobile = useMediaQuery("(max-width:600px)");
-  const today = new Date();
 
   const handleEventClick = (event: any) => {
     setSelectedEvent(event);
@@ -68,7 +66,7 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
 
 const EventComponent: React.FC<any> = ({ event }) => {
   const isMobile = useMediaQuery("(max-width:600px)");
-  const { homeTeam, awayTeam, result, start } = event;
+  const { start } = event;
   const isFuture = moment(start).isAfter(moment(), "day"); // Kontrollera om datumet är i framtiden
 
   return (
