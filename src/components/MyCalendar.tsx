@@ -95,7 +95,7 @@ const EventComponent: React.FC<any> = ({ event }) => {
         </Box>
       ) : (
         <>
-          <TeamLogo teamName={event.homeTeam} size={"50px"}/>
+          <TeamLogo teamName={event.homeTeam} size={50} />
           <Box
             style={{
               marginLeft: "5px",
@@ -104,7 +104,7 @@ const EventComponent: React.FC<any> = ({ event }) => {
           >
             vs
           </Box>
-          <TeamLogo teamName={event.awayTeam} size={"50px"}/>
+          <TeamLogo teamName={event.awayTeam} size={50} />
         </>
       )}
     </div>
