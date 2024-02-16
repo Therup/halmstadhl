@@ -125,6 +125,9 @@ const RandomStringGenerator: React.FC<Props> = () => {
               </Table>
             </TableContainer>
           </div>
+          <Box>
+            <img src="images/logo_vikings.png" width="100px" height="100px" />
+          </Box>
         </Box>
       )}
     </>
