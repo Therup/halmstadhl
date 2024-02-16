@@ -60,7 +60,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                 style={{ width: "33%", padding: 5, fontWeight: "bold" }}
               >
                 <Box style={{ display: "flex" }}>
-                  <TeamLogo teamName={matches.homeTeam} />
+                  <TeamLogo teamName={matches.homeTeam} size={50}/>
                   <Box
                     style={{
                       marginRight: "5px",
@@ -70,7 +70,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                   >
                     -
                   </Box>
-                  <TeamLogo teamName={matches.awayTeam} />
+                  <TeamLogo teamName={matches.awayTeam} size={50}/>
                   <Box
                     style={{
                       marginRight: "5px",

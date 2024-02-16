@@ -10,9 +10,10 @@ interface Logo {
 
 interface TeamLogoProps {
   teamName: string;
+  size: number
 }
 
-const TeamLogo: React.FC<TeamLogoProps> = ({ teamName }) => {
+const TeamLogo: React.FC<TeamLogoProps> = ({ teamName, size }) => {
   // Funktion för att hämta laglogga baserat på lagets namn
   const getTeamLogo = (): string => {
     const logo: Logo | undefined = logos.find(
@@ -23,7 +24,7 @@ const TeamLogo: React.FC<TeamLogoProps> = ({ teamName }) => {
 
   return (
     <Avatar
-      sx={{ width: "50px", height: "50px" }}
+      sx={{ width: {size}, height: {size} }}
       src={getTeamLogo()}
       alt={teamName}
       variant="square"

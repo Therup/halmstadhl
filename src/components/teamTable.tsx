@@ -173,7 +173,7 @@ const TeamTable: React.FC = () => {
                 >
                   <Box style={{ display: "flex" }}>
                     <Box style={{ marginRight: "5px" }}>
-                      <TeamLogo teamName={team.name} />
+                      <TeamLogo teamName={team.name} size={50}/>
                     </Box>
                     <Box style={{ marginTop: "15px" }}>{team.name}</Box>
                   </Box>
