@@ -1,19 +1,25 @@
 {
   "files": {
     "main.css": "/halmstadhl/static/css/main.d896b407.css",
-    "main.js": "/halmstadhl/static/js/main.d5502afb.js",
+    "main.js": "/halmstadhl/static/js/main.6ffa3ef9.js",
     "static/js/592.85de234e.chunk.js": "/halmstadhl/static/js/592.85de234e.chunk.js",
+    "static/media/logo_majestic.png": "/halmstadhl/static/media/logo_majestic.c25925971a2858d5a13d.png",
+    "static/media/topbanner.jpg": "/halmstadhl/static/media/topbanner.24a1d1c49d76bb41e34e.jpg",
+    "static/media/logo_spartans.png": "/halmstadhl/static/media/logo_spartans.2b48667e41f345279ede.png",
+    "static/media/logo_snusk.png": "/halmstadhl/static/media/logo_snusk.6598128e763c8f3baadb.png",
+    "static/media/logo_vikings.png": "/halmstadhl/static/media/logo_vikings.68d85c2ec241e97787d5.png",
+    "static/media/logo_icehawks.png": "/halmstadhl/static/media/logo_icehawks.9a992d1dd2667565bdf0.png",
     "static/media/slick.svg": "/halmstadhl/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/halmstadhl/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/halmstadhl/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/halmstadhl/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/halmstadhl/index.html",
     "main.d896b407.css.map": "/halmstadhl/static/css/main.d896b407.css.map",
-    "main.d5502afb.js.map": "/halmstadhl/static/js/main.d5502afb.js.map",
+    "main.6ffa3ef9.js.map": "/halmstadhl/static/js/main.6ffa3ef9.js.map",
     "592.85de234e.chunk.js.map": "/halmstadhl/static/js/592.85de234e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d896b407.css",
-    "static/js/main.d5502afb.js"
+    "static/js/main.6ffa3ef9.js"
   ]
 }
