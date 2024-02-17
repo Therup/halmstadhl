@@ -50,7 +50,7 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   }, [matches]);
 
   return (
-    <div style={{ height: 450, margin: "5px auto" }}>
+    <div style={{ height: 600, margin: "5px auto" }}>
       <Calendar
         views={["month"]}
         localizer={localizer}

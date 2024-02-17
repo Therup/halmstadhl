@@ -115,7 +115,12 @@ const TeamTable: React.FC = () => {
           <TableHead style={{ backgroundColor: "rgb(0, 44, 81)" }}>
             <TableRow>
               <TableCell
-                style={{ fontWeight: "bold", color: "white", padding: 5 }}
+                style={{
+                  fontWeight: "bold",
+                  color: "white",
+                  padding: 5,
+                  width: "40%",
+                }}
                 padding="none"
               >
                 Team
@@ -190,7 +195,9 @@ const TeamTable: React.FC = () => {
                 <TableCell padding="none">
                   {team.statistics.goalsConceded}
                 </TableCell>
-                <TableCell padding="none">{team.statistics.points}</TableCell>
+                <TableCell padding="none" style={{ fontWeight: "bold" }}>
+                  {team.statistics.points}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
