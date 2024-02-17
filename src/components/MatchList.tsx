@@ -56,21 +56,17 @@ const Matches = () => {
                 <TableCell
                   style={{
                     color: "white",
-                    width: "33%",
+                    width: "60%",
+                    fontWeight: "bold",
+                    textAlign: "center",
                     padding: 5,
                   }}
-                  padding="none"
-                >
-                  Lag
-                </TableCell>
-                <TableCell
-                  style={{ color: "white", width: "33%" }}
                   padding="none"
                 >
                   Resultat
                 </TableCell>
                 <TableCell
-                  style={{ color: "white", width: "33%" }}
+                  style={{ color: "white", width: "40%", fontWeight: "bold" }}
                   padding="none"
                 >
                   Datum

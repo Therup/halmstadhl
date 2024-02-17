@@ -55,38 +55,37 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
           <TableHead></TableHead>
           <TableBody>
             <TableRow>
-              <TableCell
-                padding="none"
-                style={{ width: "33%", padding: 5, fontWeight: "bold" }}
-              >
-                <Box style={{ display: "flex" }}>
-                  <TeamLogo teamName={matches.homeTeam} size={50} />
-                  <Box
-                    style={{
-                      marginRight: "5px",
-                      marginLeft: "5px",
-                      marginTop: "15px",
-                    }}
-                  >
-                    -
+              <TableCell padding="none" style={{ width: "60%" }}>
+                <Box
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginRight: "20px",
+                  }}
+                >
+                  <Box>
+                    <TeamLogo teamName={matches.awayTeam} size={50} />
                   </Box>
-                  <TeamLogo teamName={matches.awayTeam} size={50} />
+
                   <Box
                     style={{
-                      marginRight: "5px",
-                      marginLeft: "5px",
                       marginTop: "15px",
+                      fontWeight: "bold",
+                      display: "flex",
                     }}
                   >
-                    :
+                    <Box>{matches.result?.homeScore || 0}</Box>
+                    <Box style={{ marginLeft: "20px", marginRight: "20px" }}>
+                      -
+                    </Box>
+                    <Box>{matches.result?.awayScore || 0}</Box>
+                  </Box>
+                  <Box>
+                    <TeamLogo teamName={matches.homeTeam} size={50} />
                   </Box>
                 </Box>
               </TableCell>
-              <TableCell padding="none" style={{ width: "33%" }}>
-                {matches.result?.homeScore || 0} -{" "}
-                {matches.result?.awayScore || 0}
-              </TableCell>
-              <TableCell padding="none" style={{ width: "33%" }}>
+              <TableCell padding="none" style={{ width: "40%" }}>
                 {formattedDate}{" "}
                 {user && user.isAdmin && (
                   <IconButton
