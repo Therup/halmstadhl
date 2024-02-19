@@ -10,7 +10,6 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import "./theme.css";
 import PageTitle from "./utils/PageTitle";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import AddTeamForm from "./AddTeamForm";
@@ -108,7 +107,6 @@ const TeamTable: React.FC = () => {
       }}
     >
       <PageTitle title="Tabell 23/24" icon={<EqualizerIcon />} />
-      <Admin />
       <TableContainer
         component={Paper}
         style={{ display: "inline-block", maxWidth: "600px" }}
@@ -205,6 +203,8 @@ const TeamTable: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Admin />
       {user && user.isAdmin && <AddTeamForm />}
       <Box style={{ marginTop: "20px" }}>
         <Carousel images={images} />

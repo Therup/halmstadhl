@@ -28,15 +28,15 @@ const AppBarComponent: React.FC<AppBarProps> = ({
         <Tabs
           value={value}
           onChange={handleChange}
-          variant="scrollable"
           scrollButtons="auto"
+          centered
           style={{
             color: "white",
           }}
         >
           <Tab style={{ display: "inline-block" }} label="Tabell" />
           <Tab style={{ display: "inline-block" }} label="Kalender" />
-          <Tab style={{ display: "inline-block" }} label="Spelade matcher" />
+          <Tab style={{ display: "inline-block" }} label="Matcher" />
           <Tab
             style={{ display: "inline-block" }}
             label="Niels Larsen throphy"

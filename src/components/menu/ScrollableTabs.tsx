@@ -7,7 +7,7 @@ import ContentComponent from "./ContentComponent";
 const ScrollableTabs: React.FC = () => {
   const [value, setValue] = useState<number>(0);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-  const isMobile = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery("(max-width:775px)");
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);

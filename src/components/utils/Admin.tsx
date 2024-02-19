@@ -52,7 +52,7 @@ const Admin: React.FC = () => {
       }}
     >
       {user ? (
-        <Box style={{ display: "flex", marginBottom: "10px" }}>
+        <Box style={{ display: "flex", marginTop: "10px" }}>
           <p>Inloggad som {user.UserName}</p>
           <Button
             className="custom-button"
@@ -70,7 +70,7 @@ const Admin: React.FC = () => {
           </Button>
         </Box>
       ) : (
-        <Box style={{ display: "flex", marginBottom: "10px" }}>
+        <Box style={{ display: "flex", marginTop: "10px" }}>
           <TextField
             placeholder="Användarnamn"
             type="text"

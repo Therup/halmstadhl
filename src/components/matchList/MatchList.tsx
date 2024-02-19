@@ -65,7 +65,7 @@ const Matches = () => {
           style={{ backgroundColor: "white" }}
           onClick={() => toggleMatches(false)}
         >
-          Ej spelade matcher
+          Kommande
         </Button>
       </Box>
       <Box style={{ width: "600px" }}>

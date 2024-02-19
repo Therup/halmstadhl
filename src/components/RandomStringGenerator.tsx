@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./theme.css";
 import {
   TextField,
   Button,
