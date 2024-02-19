@@ -46,7 +46,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
               <Box
                 style={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "left",
                   fontWeight: "bold",
                 }}
               >
@@ -89,22 +89,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
               </Box>
             }
           />
-          <Tab
-            label={
-              <Box
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  fontWeight: "bold",
-                }}
-              >
-                <Box>
-                  <LockOpenIcon />
-                </Box>
-                <Box style={{ marginLeft: "5px" }}>Admin</Box>
-              </Box>
-            }
-          />
+
           <Tab
             label={
               <Box

@@ -17,7 +17,8 @@ import AddTeamForm from "./AddTeamForm";
 import { useUser } from "./utils/UserContext";
 import Carousel from "./utils/Carousel";
 import images from "../data/images.json";
-import TeamLogo from "./TeamLogo";
+import TeamLogo from "./utils/TeamLogo";
+import Admin from "./utils/Admin";
 
 const TeamTable: React.FC = () => {
   const { user } = useUser();
@@ -107,6 +108,7 @@ const TeamTable: React.FC = () => {
       }}
     >
       <PageTitle title="Tabell 23/24" icon={<EqualizerIcon />} />
+      <Admin />
       <TableContainer
         component={Paper}
         style={{ display: "inline-block", maxWidth: "600px" }}
@@ -180,7 +182,7 @@ const TeamTable: React.FC = () => {
                     <Box style={{ marginRight: "5px" }}>
                       <TeamLogo teamName={team.name} size={50} />
                     </Box>
-                    <Box style={{ marginTop: "15px" }}>{team.name}</Box>
+                    <Box style={{ marginTop: "17px" }}>{team.name}</Box>
                   </Box>
                 </TableCell>
                 <TableCell padding="none">

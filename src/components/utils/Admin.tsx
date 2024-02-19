@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FirebaseService } from "../FirebaseService";
-import { useUser } from "./utils/UserContext";
-import "./theme.css";
+import { FirebaseService } from "../../FirebaseService";
+import { useUser } from "./UserContext";
 import { Box, Button, TextField } from "@material-ui/core";
-import PageTitle from "./utils/PageTitle";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Admin: React.FC = () => {
@@ -55,27 +52,25 @@ const Admin: React.FC = () => {
       }}
     >
       {user ? (
-        <Box></Box>
-      ) : (
-        <Box>
-          <PageTitle title="Logga in" icon={<LockOpenIcon />} />
-        </Box>
-      )}
-
-      {user ? (
-        <Box>
+        <Box style={{ display: "flex", marginBottom: "10px" }}>
           <p>Inloggad som {user.UserName}</p>
           <Button
             className="custom-button"
             variant="contained"
-            style={{ marginTop: "20px", backgroundColor: "white", padding: 5 }}
+            style={{
+              backgroundColor: "white",
+              padding: 1,
+              marginLeft: "20px",
+              marginTop: "8px",
+              height: "36px",
+            }}
             onClick={handleLogout}
           >
-            Logga ut <ExitToAppIcon style={{ marginLeft: "5px" }} />
+            <Box>Logga ut</Box> <ExitToAppIcon style={{ marginLeft: "5px" }} />
           </Button>
         </Box>
       ) : (
-        <>
+        <Box style={{ display: "flex", marginBottom: "10px" }}>
           <TextField
             placeholder="Användarnamn"
             type="text"
@@ -91,12 +86,12 @@ const Admin: React.FC = () => {
           <Button
             className="custom-button"
             variant="contained"
-            style={{ marginTop: "20px", backgroundColor: "white" }}
+            style={{ marginLeft: "10px", padding: 1, backgroundColor: "white" }}
             onClick={handleLogin}
           >
-            Logga in
+            Login
           </Button>
-        </>
+        </Box>
       )}
     </Box>
   );

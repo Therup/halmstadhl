@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Container } from "@material-ui/core";
 import TeamTable from "../teamTable";
-import Matches from "../MatchList";
-import Admin from "../Admin";
+import Matches from "../matchList/MatchList";
+import Admin from "../utils/Admin";
 import RandomStringGenerator from "../RandomStringGenerator";
 import ContactForm from "../Contact";
-import CalendarPage from "../CalendarPage";
+import CalendarPage from "../calendar/CalendarPage";
 
 interface ContentProps {
   value: number;
@@ -24,9 +24,8 @@ const ContentComponent: React.FC<ContentProps> = ({ value }) => {
         {value === 0 && <TeamTable />}
         {value === 1 && <CalendarPage />}
         {value === 2 && <Matches />}
-        {value === 3 && <Admin />}
-        {value === 4 && <RandomStringGenerator />}
-        {value === 5 && <ContactForm />}
+        {value === 3 && <RandomStringGenerator />}
+        {value === 4 && <ContactForm />}
       </Box>
     </Container>
   );

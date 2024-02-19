@@ -31,16 +31,12 @@ const AppBarComponent: React.FC<AppBarProps> = ({
           variant="scrollable"
           scrollButtons="auto"
           style={{
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
             color: "white",
           }}
         >
           <Tab style={{ display: "inline-block" }} label="Tabell" />
           <Tab style={{ display: "inline-block" }} label="Kalender" />
           <Tab style={{ display: "inline-block" }} label="Spelade matcher" />
-          <Tab style={{ display: "inline-block" }} label="Admin" />
           <Tab
             style={{ display: "inline-block" }}
             label="Niels Larsen throphy"

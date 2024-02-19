@@ -9,10 +9,10 @@ import {
   Box,
   IconButton,
 } from "@material-ui/core";
-import { useUser } from "./utils/UserContext";
+import { useUser } from "../utils/UserContext";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { FirebaseService } from "../FirebaseService";
-import TeamLogo from "./TeamLogo";
+import { FirebaseService } from "../../FirebaseService";
+import TeamLogo from "../utils/TeamLogo";
 
 interface MatchProps {
   matches: {

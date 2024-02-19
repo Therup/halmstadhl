@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { FirebaseService, Team, Match } from "../FirebaseService";
+import { FirebaseService, Team, Match } from "../../FirebaseService";
 import MatchItem from "./MatchItem";
-import "./theme.css";
 import {
   Box,
   Paper,
@@ -11,7 +10,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import PageTitle from "./utils/PageTitle";
+import PageTitle from "../utils/PageTitle";
 import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 
 const Matches = () => {

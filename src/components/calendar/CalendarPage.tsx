@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
-import { FirebaseService, Match } from "../FirebaseService";
+import { FirebaseService, Match } from "../../FirebaseService";
 import MatchForm from "./CreateMatchFormForCalendar";
 
 const CalendarPage: React.FC = () => {

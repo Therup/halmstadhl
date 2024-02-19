@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, TextField, Select, InputLabel, Box } from "@material-ui/core";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
-import { Team, Match } from "../FirebaseService";
+import { Team, Match } from "../../FirebaseService";
 
 const MatchForm: React.FC = ({}) => {
   const [homeTeam, setHomeTeam] = useState<string>("");

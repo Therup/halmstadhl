@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Box, Typography, Button } from "@mui/material";
-import TeamLogo from "../TeamLogo";
+import TeamLogo from "./TeamLogo";
 import { FirebaseService } from "../../FirebaseService";
 import { TextField } from "@material-ui/core";
 import { useUser } from "./UserContext";

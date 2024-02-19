@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Match } from "../FirebaseService";
-import TeamLogo from "./TeamLogo";
+import { Match } from "../../FirebaseService";
+import TeamLogo from "../utils/TeamLogo";
 import { Box, useMediaQuery } from "@material-ui/core";
-import EventModal from "./utils/EventModal";
+import EventModal from "../utils/EventModal";
 import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 
 const localizer = momentLocalizer(moment);
