@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/halmstadhl/static/css/main.d896b407.css",
-    "main.js": "/halmstadhl/static/js/main.dcbd11ff.js",
+    "main.css": "/halmstadhl/static/css/main.b4aafe16.css",
+    "main.js": "/halmstadhl/static/js/main.e0e33cc2.js",
     "static/js/592.85de234e.chunk.js": "/halmstadhl/static/js/592.85de234e.chunk.js",
     "static/media/logo_majestic.png": "/halmstadhl/static/media/logo_majestic.c25925971a2858d5a13d.png",
     "static/media/topbanner.jpg": "/halmstadhl/static/media/topbanner.24a1d1c49d76bb41e34e.jpg",
@@ -14,12 +14,12 @@
     "static/media/slick.ttf": "/halmstadhl/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/halmstadhl/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/halmstadhl/index.html",
-    "main.d896b407.css.map": "/halmstadhl/static/css/main.d896b407.css.map",
-    "main.dcbd11ff.js.map": "/halmstadhl/static/js/main.dcbd11ff.js.map",
+    "main.b4aafe16.css.map": "/halmstadhl/static/css/main.b4aafe16.css.map",
+    "main.e0e33cc2.js.map": "/halmstadhl/static/js/main.e0e33cc2.js.map",
     "592.85de234e.chunk.js.map": "/halmstadhl/static/js/592.85de234e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d896b407.css",
-    "static/js/main.dcbd11ff.js"
+    "static/css/main.b4aafe16.css",
+    "static/js/main.e0e33cc2.js"
   ]
 }
