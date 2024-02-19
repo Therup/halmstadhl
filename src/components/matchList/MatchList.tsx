@@ -3,6 +3,7 @@ import { FirebaseService, Team, Match } from "../../FirebaseService";
 import MatchItem from "./MatchItem";
 import {
   Box,
+  Button,
   Paper,
   Table,
   TableCell,
@@ -16,14 +17,14 @@ import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 const Matches = () => {
   const [matches, setMatches] = useState<Match[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [showPlayedMatches, setShowPlayedMatches] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const matchesData = await FirebaseService.getMatches();
-        const playedMatches = matchesData.filter((match) => match.isPlayed);
         const teamsData = await FirebaseService.getTeams();
-        setMatches(playedMatches);
+        setMatches(matchesData);
         setTeams(teamsData);
       } catch (error) {
         console.error("Fel vid hämtning av matchdata:", error);
@@ -37,6 +38,10 @@ const Matches = () => {
     setMatches(matches.filter((match) => match.id !== matchId));
   };
 
+  const toggleMatches = (showPlayed: boolean) => {
+    setShowPlayedMatches(showPlayed);
+  };
+
   return (
     <Box
       className="mui-theme"
@@ -47,6 +52,22 @@ const Matches = () => {
       }}
     >
       <PageTitle title="Spelade matcher" icon={<SportsHockeyIcon />} />
+      <Box style={{ marginBottom: "10px" }}>
+        <Button
+          variant={showPlayedMatches ? "contained" : "outlined"}
+          onClick={() => toggleMatches(true)}
+          style={{ marginRight: "10px", backgroundColor: "white" }}
+        >
+          Spelade matcher
+        </Button>
+        <Button
+          variant={!showPlayedMatches ? "contained" : "outlined"}
+          style={{ backgroundColor: "white" }}
+          onClick={() => toggleMatches(false)}
+        >
+          Ej spelade matcher
+        </Button>
+      </Box>
       <Box style={{ width: "600px" }}>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
@@ -75,14 +96,18 @@ const Matches = () => {
           </Table>
         </TableContainer>
       </Box>
-      {matches.map((match) => (
-        <MatchItem
-          key={match.id}
-          matches={match}
-          teams={teams}
-          onDeleteMatch={handleDeleteMatch} // Skicka funktionen för att radera matchen
-        />
-      ))}
+      {matches
+        .filter((match) =>
+          showPlayedMatches ? match.isPlayed : !match.isPlayed
+        )
+        .map((match) => (
+          <MatchItem
+            key={match.id}
+            matches={match}
+            teams={teams}
+            onDeleteMatch={handleDeleteMatch}
+          />
+        ))}
 
       <hr />
     </Box>
