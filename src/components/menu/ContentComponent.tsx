@@ -18,6 +18,7 @@ const ContentComponent: React.FC<ContentProps> = ({ value }) => {
         backgroundColor: "#f0f0f0",
         minHeight: "100vh",
         minWidth: "100%",
+        padding: 10,
       }}
     >
       <Box>
