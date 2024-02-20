@@ -81,7 +81,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                     <Box>{matches.result?.awayScore || 0}</Box>
                   </Box>
                   <Box>
-                    <TeamLogo teamName={matches.homeTeam} size={50} />
+                    
                   </Box>
                 </Box>
               </TableCell>

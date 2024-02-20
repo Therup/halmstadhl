@@ -18,6 +18,7 @@ export interface User {
 }
 
 export interface Team {
+  info: string;
   name: string;
 }
 
@@ -55,6 +56,7 @@ export const FirebaseService: FirebaseService = {
         const data = doc.data();
         const team: Team = {
           name: data.name || "",
+          info: data.info || "",
         };
         teamsData.push(team);
       });

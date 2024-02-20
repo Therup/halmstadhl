@@ -37,10 +37,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
           <Tab style={{ display: "inline-block" }} label="Tabell" />
           <Tab style={{ display: "inline-block" }} label="Kalender" />
           <Tab style={{ display: "inline-block" }} label="Matcher" />
-          <Tab
-            style={{ display: "inline-block" }}
-            label="Niels Larsen throphy"
-          />
+          <Tab style={{ display: "inline-block" }} label="Lagen" />
           <Tab style={{ display: "inline-block" }} label="Kontakt" />
         </Tabs>
       )}

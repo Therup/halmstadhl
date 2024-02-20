@@ -6,6 +6,7 @@ import Admin from "../utils/Admin";
 import RandomStringGenerator from "../RandomStringGenerator";
 import ContactForm from "../Contact";
 import CalendarPage from "../calendar/CalendarPage";
+import TeamsComponent from "../teams/TeamsComponent";
 
 interface ContentProps {
   value: number;
@@ -25,7 +26,7 @@ const ContentComponent: React.FC<ContentProps> = ({ value }) => {
         {value === 0 && <TeamTable />}
         {value === 1 && <CalendarPage />}
         {value === 2 && <Matches />}
-        {value === 3 && <RandomStringGenerator />}
+        {value === 3 && <TeamsComponent />}
         {value === 4 && <ContactForm />}
       </Box>
     </Container>

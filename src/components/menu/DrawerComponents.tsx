@@ -102,7 +102,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
                 <Box>
                   <EmojiEventsIcon />
                 </Box>
-                <Box style={{ marginLeft: "5px" }}>Cup</Box>
+                <Box style={{ marginLeft: "5px" }}>Lagen</Box>
               </Box>
             }
           />
