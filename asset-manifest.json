@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/halmstadhl/static/css/main.b4aafe16.css",
-    "main.js": "/halmstadhl/static/js/main.c71c3af0.js",
+    "main.js": "/halmstadhl/static/js/main.7144b82a.js",
     "static/media/logo_majestic.png": "/halmstadhl/static/media/logo_majestic.c25925971a2858d5a13d.png",
     "static/media/topbanner.jpg": "/halmstadhl/static/media/topbanner.24a1d1c49d76bb41e34e.jpg",
     "static/media/logo_spartans.png": "/halmstadhl/static/media/logo_spartans.2b48667e41f345279ede.png",
@@ -14,10 +14,10 @@
     "static/media/slick.woff": "/halmstadhl/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/halmstadhl/index.html",
     "main.b4aafe16.css.map": "/halmstadhl/static/css/main.b4aafe16.css.map",
-    "main.c71c3af0.js.map": "/halmstadhl/static/js/main.c71c3af0.js.map"
+    "main.7144b82a.js.map": "/halmstadhl/static/js/main.7144b82a.js.map"
   },
   "entrypoints": [
     "static/css/main.b4aafe16.css",
-    "static/js/main.c71c3af0.js"
+    "static/js/main.7144b82a.js"
   ]
 }
