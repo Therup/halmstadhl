@@ -73,7 +73,10 @@ const Matches = () => {
       </Box>
       <Box>
         {isMobile ? (
-          <TableContainer component={Paper} style={{ width: "100%" }}>
+          <TableContainer
+            component={Paper}
+            style={{ width: "100%", minWidth: "375px" }}
+          >
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "rgb(0, 44, 81)" }}>
                 <TableRow>
