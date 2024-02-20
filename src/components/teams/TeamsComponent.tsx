@@ -14,6 +14,7 @@ import TeamLogo from "../utils/TeamLogo";
 const TeamsComponent: React.FC = ({}) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [selectedTeam, setSelectedTeam] = useState<string>("Vikings");
+  console.log(teams);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,8 +62,8 @@ const TeamsComponent: React.FC = ({}) => {
       >
         {teams.map((team) => (
           <Box key={team.name} hidden={selectedTeam !== team.name}>
-            <Card variant="outlined" style={{ minWidth: 200 }}>
-              <CardContent>
+            <Card variant="outlined" style={{ minWidth: 200, padding: 0 }}>
+              <CardContent style={{ padding: 0 }}>
                 <Box style={{ textAlign: "center" }}>
                   <TeamLogo teamName={team.name} size={200} />
                 </Box>
@@ -82,6 +83,7 @@ const TeamsComponent: React.FC = ({}) => {
                     variant="body2"
                     color="textSecondary"
                     component="p"
+                    style={{ width: "60%" }}
                   >
                     {team.info}
                   </Typography>
@@ -90,7 +92,13 @@ const TeamsComponent: React.FC = ({}) => {
                     color="textSecondary"
                     component="p"
                   >
-                    Spelare:
+                    <Box>Spelare:</Box>
+                    <Box>
+                      {" "}
+                      {team.players.map((player, index) => (
+                        <div key={index}>{player}</div>
+                      ))}{" "}
+                    </Box>
                   </Typography>
                 </Box>
               </CardContent>

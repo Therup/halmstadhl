@@ -20,6 +20,7 @@ export interface User {
 export interface Team {
   info: string;
   name: string;
+  players: string[];
 }
 
 export interface Match {
@@ -57,6 +58,7 @@ export const FirebaseService: FirebaseService = {
         const team: Team = {
           name: data.name || "",
           info: data.info || "",
+          players: data.players || [""],
         };
         teamsData.push(team);
       });
