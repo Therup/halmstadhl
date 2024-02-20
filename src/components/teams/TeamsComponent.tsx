@@ -13,7 +13,7 @@ import TeamLogo from "../utils/TeamLogo";
 
 const TeamsComponent: React.FC = ({}) => {
   const [teams, setTeams] = useState<Team[]>([]);
-  const [selectedTeam, setSelectedTeam] = useState<string>("");
+  const [selectedTeam, setSelectedTeam] = useState<string>("Vikings");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +68,7 @@ const TeamsComponent: React.FC = ({}) => {
                 </Box>
 
                 <Typography
-                  variant="h6"
+                  variant="h4"
                   component="h2"
                   style={{ marginTop: 20, textAlign: "center" }}
                 >
