@@ -46,11 +46,11 @@ const DrawerComponent: React.FC<DrawerProps> = ({
               <Box
                 style={{
                   display: "flex",
-                  alignItems: "left",
+                  alignItems: "center",
                   fontWeight: "bold",
                 }}
               >
-                <Box>
+                <Box style={{ marginTop: "5px" }}>
                   <EqualizerIcon />
                 </Box>
                 <Box style={{ marginLeft: "5px" }}>Tabell</Box>
@@ -66,7 +66,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
                   fontWeight: "bold",
                 }}
               >
-                <Box>
+                <Box style={{ marginTop: "5px" }}>
                   <CalendarMonth />
                 </Box>
                 <Box style={{ marginLeft: "5px" }}>Kalender</Box>
@@ -82,7 +82,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
                   fontWeight: "bold",
                 }}
               >
-                <Box>
+                <Box style={{ marginTop: "5px" }}>
                   <SportsHockeyIcon />
                 </Box>
                 <Box style={{ marginLeft: "5px" }}>Matcher</Box>
@@ -99,7 +99,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
                   fontWeight: "bold",
                 }}
               >
-                <Box>
+                <Box style={{ marginTop: "5px" }}>
                   <EmojiEventsIcon />
                 </Box>
                 <Box style={{ marginLeft: "5px" }}>Lagen</Box>
@@ -115,7 +115,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
                   fontWeight: "bold",
                 }}
               >
-                <Box>
+                <Box style={{ marginTop: "5px" }}>
                   <MailOutlineIcon />
                 </Box>
                 <Box style={{ marginLeft: "5px" }}>Kontakt</Box>
