@@ -36,7 +36,7 @@ const Matches = () => {
 
     fetchData();
   }, []);
-
+  console.log(matches);
   const handleDeleteMatch = (matchId: string) => {
     setMatches(matches.filter((match) => match.id !== matchId));
   };

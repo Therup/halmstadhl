@@ -14,7 +14,6 @@ import TeamLogo from "../utils/TeamLogo";
 const TeamsComponent: React.FC = ({}) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [selectedTeam, setSelectedTeam] = useState<string>("Vikings");
-  console.log(teams);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -8,6 +8,7 @@ import {
   addDoc,
   Timestamp,
   updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import { firestore } from "./Firebase";
 
@@ -33,6 +34,14 @@ export interface Match {
     awayScore: number;
     homeScore: number;
   };
+  homeGoalScorers: {
+    player: string;
+    goals: number;
+  }[];
+  awayGoalScorers: {
+    player: string;
+    goals: number;
+  }[];
 }
 
 interface FirebaseService {
@@ -43,8 +52,13 @@ interface FirebaseService {
   addTeam(team: Team): Promise<void>;
   addMatch(match: Match): Promise<void>;
   updateMatch(matchId: string, updatedMatchData: Partial<Match>): Promise<void>;
+  addGoalScorer(
+    matchId: string,
+    team: "home" | "away",
+    goalScorer: { player: string; goals: number }
+  ): Promise<void>;
 }
-// eslint-disable-next-line
+
 export const FirebaseService: FirebaseService = {
   async getTeams() {
     try {
@@ -65,7 +79,7 @@ export const FirebaseService: FirebaseService = {
 
       return teamsData;
     } catch (error) {
-      console.error("Fel vid hämtning av lagdata:", error);
+      console.error("Error fetching team data:", error);
       throw error;
     }
   },
@@ -81,7 +95,7 @@ export const FirebaseService: FirebaseService = {
       matchesSnapshot.forEach((doc) => {
         const data = doc.data();
         const match: Match = {
-          id: doc.id, // Lägg till dokumentets ID här
+          id: doc.id,
           awayTeam: data.awayTeam || "",
           homeTeam: data.homeTeam || "",
           date: data.date || null,
@@ -90,13 +104,15 @@ export const FirebaseService: FirebaseService = {
             awayScore: data.result?.awayScore || 0,
             homeScore: data.result?.homeScore || 0,
           },
+          homeGoalScorers: data.homeGoalScorers || [],
+          awayGoalScorers: data.awayGoalScorers || [],
         };
         matchesData.push(match);
       });
 
       return matchesData;
     } catch (error) {
-      console.error("Fel vid hämtning av matchdata:", error);
+      console.error("Error fetching match data:", error);
       throw error;
     }
   },
@@ -113,17 +129,18 @@ export const FirebaseService: FirebaseService = {
         const user: User = {
           UserName: data.UserName || "",
           Password: data.Password || "",
-          isAdmin: data.IsAdmin || "",
+          isAdmin: data.IsAdmin || false,
         };
         usersData.push(user);
       });
 
       return usersData;
     } catch (error) {
-      console.error("Fel vid hämtning av användardata:", error);
+      console.error("Error fetching user data:", error);
       throw error;
     }
   },
+
   async deleteMatch(matchId: string) {
     try {
       const matchDocRef = doc(firestore, "matches2", matchId);
@@ -134,26 +151,29 @@ export const FirebaseService: FirebaseService = {
       throw error;
     }
   },
+
   async addTeam(team: Team) {
     try {
       const teamsCollection = collection(firestore, "Teams2");
-      await addDoc(teamsCollection, team); // Add the team to Firestore
+      await addDoc(teamsCollection, team);
       console.log("Team successfully added to Firestore.");
     } catch (error) {
       console.error("Error adding team to Firestore:", error);
       throw error;
     }
   },
+
   async addMatch(match: Match) {
     try {
       const matchesCollection = collection(firestore, "matches2");
-      await addDoc(matchesCollection, match); // Lägg till matchen i Firestore
+      await addDoc(matchesCollection, match);
       console.log("Match successfully added to Firestore.");
     } catch (error) {
       console.error("Error adding match to Firestore:", error);
       throw error;
     }
   },
+
   async updateMatch(
     matchId: string,
     updatedMatchData: Partial<Match>
@@ -164,6 +184,41 @@ export const FirebaseService: FirebaseService = {
       console.log("Match successfully updated in Firestore.");
     } catch (error) {
       console.error("Error updating match in Firestore:", error);
+      throw error;
+    }
+  },
+
+  async addGoalScorer(
+    matchId: string,
+    team: "home" | "away",
+    goalScorer: { player: string; goals: number }
+  ): Promise<void> {
+    try {
+      const matchDocRef = doc(firestore, "matches2", matchId);
+      const matchDocSnapshot = await getDoc(matchDocRef);
+      if (matchDocSnapshot.exists()) {
+        const matchData = matchDocSnapshot.data() as Match;
+        let updatedGoalScorers;
+        if (team === "home") {
+          updatedGoalScorers = [...matchData.homeGoalScorers, goalScorer];
+        } else {
+          updatedGoalScorers = [...matchData.awayGoalScorers, goalScorer];
+        }
+        await updateDoc(matchDocRef, {
+          [team === "home" ? "homeGoalScorers" : "awayGoalScorers"]:
+            updatedGoalScorers,
+        });
+        console.log(
+          "Goal scorer successfully added to the match in Firestore."
+        );
+      } else {
+        console.error("Match not found in Firestore.");
+      }
+    } catch (error) {
+      console.error(
+        "Error adding goal scorer to the match in Firestore:",
+        error
+      );
       throw error;
     }
   },

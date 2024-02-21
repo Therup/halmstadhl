@@ -66,6 +66,8 @@ const MatchForm: React.FC = ({}) => {
         awayScore: Number(awayScore),
       },
       isPlayed,
+      homeGoalScorers: [],
+      awayGoalScorers: [],
     };
 
     const db = getFirestore();
