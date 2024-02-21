@@ -19,7 +19,6 @@ const Matches = () => {
   const [matches, setMatches] = useState<Match[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [showPlayedMatches, setShowPlayedMatches] = useState(true);
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const isMobile = useMediaQuery("(max-width:600px)");
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const Matches = () => {
 
     fetchData();
   }, []);
-  console.log(matches);
   const handleDeleteMatch = (matchId: string) => {
     setMatches(matches.filter((match) => match.id !== matchId));
   };

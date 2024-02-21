@@ -14,6 +14,16 @@ interface CarouselProps {
   images: Image[];
 }
 
+interface SliderSettings {
+  dots: boolean;
+  infinite: boolean;
+  speed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+  autoplay: boolean;
+  autoplaySpeed: number;
+}
+
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const settings: SliderSettings = {
     dots: true,
@@ -48,13 +58,3 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 };
 
 export default Carousel;
-
-interface SliderSettings {
-  dots: boolean;
-  infinite: boolean;
-  speed: number;
-  slidesToShow: number;
-  slidesToScroll: number;
-  autoplay: boolean;
-  autoplaySpeed: number;
-}

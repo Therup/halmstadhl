@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Drawer, Tab, Tabs } from "@material-ui/core";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";

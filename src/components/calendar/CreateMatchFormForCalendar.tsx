@@ -51,10 +51,9 @@ const MatchForm: React.FC = ({}) => {
     selectedDate.setHours(0, 0, 0, 0); // Nollställ tiden för att matcha datumet
 
     const isFutureDate = selectedDate > currentDate;
-    const isPlayed = !isFutureDate;
+    const isPlayed = !isFutureDate; //isPlayed får inte vara ett framtida datum
 
     const timestamp = Timestamp.fromDate(selectedDate);
-    console.log(timestamp);
 
     const matchData: Match = {
       id: "",

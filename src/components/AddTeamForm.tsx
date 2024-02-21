@@ -6,9 +6,6 @@ import PageTitle from "./utils/PageTitle";
 
 const AddTeamForm = () => {
   const [teamName, setTeamName] = useState<string>("");
-  const [wins, setWins] = useState<number>(0);
-  const [losses, setLosses] = useState<number>(0);
-  const [draws, setDraws] = useState<number>(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -16,15 +13,6 @@ const AddTeamForm = () => {
     switch (name) {
       case "teamName":
         setTeamName(value);
-        break;
-      case "wins":
-        setWins(parseInt(value, 10));
-        break;
-      case "losses":
-        setLosses(parseInt(value, 10));
-        break;
-      case "draws":
-        setDraws(parseInt(value, 10));
         break;
       default:
         break;
@@ -36,11 +24,6 @@ const AddTeamForm = () => {
 
     const teamData = {
       name: teamName,
-      statistics: {
-        wins,
-        losses,
-        draws,
-      },
     };
 
     try {
@@ -49,14 +32,11 @@ const AddTeamForm = () => {
       await addDoc(teamsRef, teamData);
 
       setTeamName("");
-      setWins(0);
-      setLosses(0);
-      setDraws(0);
 
-      alert("Team successfully added!");
+      alert("WOW du lyckades lägga till ett lag. GRATTIS!!");
     } catch (error) {
-      console.error("Error adding team to Firestore:", error);
-      alert("Failed to add team. Please try again later.");
+      console.error("Error med att lägga till lag i Firestore:", error);
+      alert("Misslyckades lägga till lag");
     }
   };
 
@@ -84,31 +64,7 @@ const AddTeamForm = () => {
                 value={teamName}
                 onChange={handleInputChange}
               />
-              <TextField
-                id="outlined-number"
-                label="Vinster"
-                type="number"
-                name="wins"
-                value={wins.toString()}
-                onChange={handleInputChange}
-              />
             </Box>
-            <TextField
-              id="outlined-number"
-              label="Förluster"
-              type="number"
-              name="losses"
-              value={losses.toString()}
-              onChange={handleInputChange}
-            />
-            <TextField
-              id="outlined-number"
-              label="Oavgjorda"
-              type="number"
-              name="draws"
-              value={draws.toString()}
-              onChange={handleInputChange}
-            />
           </Box>
           <Button
             className="custom-button"

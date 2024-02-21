@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Container,
   Tab,
   Tabs,
+  TextField,
   Typography,
 } from "@material-ui/core";
 import { FirebaseService, Team } from "../../FirebaseService";
 import TeamLogo from "../utils/TeamLogo";
+import { useUser } from "../utils/UserContext";
 
 const TeamsComponent: React.FC = ({}) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [selectedTeam, setSelectedTeam] = useState<string>("Vikings");
+  const [newPlayerName, setNewPlayerName] = useState<string>("");
+  const { user } = useUser();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +38,30 @@ const TeamsComponent: React.FC = ({}) => {
     setSelectedTeam(newValue);
   };
 
+  const handleAddPlayer = async () => {
+    if (newPlayerName.trim() === "") return;
+    try {
+      const updatedTeams = teams.map((team) => {
+        if (team.name === selectedTeam) {
+          return {
+            ...team,
+            players: [...team.players, newPlayerName.trim()],
+          };
+        }
+        return team;
+      });
+
+      await FirebaseService.updateTeamPlayers(
+        selectedTeam,
+        updatedTeams.find((team) => team.name === selectedTeam)?.players || []
+      );
+      setNewPlayerName("");
+      setTeams(updatedTeams);
+    } catch (error) {
+      console.error("Error adding player:", error);
+    }
+  };
+
   return (
     <Box>
       <Tabs
@@ -43,8 +72,9 @@ const TeamsComponent: React.FC = ({}) => {
           color: "white",
         }}
       >
-        {teams.map((team) => (
+        {teams.map((team, index) => (
           <Tab
+            key={index}
             value={team.name}
             style={{ display: "inline-block", width: "75px" }}
             label={<TeamLogo teamName={team.name} size={50} />}
@@ -76,34 +106,46 @@ const TeamsComponent: React.FC = ({}) => {
                 </Typography>
                 <hr />
                 <Box
-                  style={{ display: "flex", justifyContent: "space-evenly" }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    padding: 3,
+                  }}
                 >
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    style={{ width: "60%" }}
-                  >
+                  <Box style={{ width: "60%", borderRight: "1px solid grey" }}>
                     {team.info}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  </Box>
+                  <Box style={{ paddingBottom: 10, marginLeft: "5px" }}>
                     <Box>Spelare:</Box>
                     <Box>
-                      {" "}
                       {team.players.map((player, index) => (
                         <div key={index}>{player}</div>
-                      ))}{" "}
+                      ))}
                     </Box>
-                  </Typography>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>
           </Box>
         ))}
+        {user && user.isAdmin && (
+          <Box style={{ marginTop: 20 }}>
+            <TextField
+              label="Ny spelare"
+              value={newPlayerName}
+              onChange={(e) => setNewPlayerName(e.target.value)}
+              variant="outlined"
+              size="small"
+            />
+            <Button
+              variant="contained"
+              onClick={handleAddPlayer}
+              style={{ marginLeft: 10, backgroundColor: "white" }}
+            >
+              Ny spelare
+            </Button>
+          </Box>
+        )}
       </Container>
     </Box>
   );

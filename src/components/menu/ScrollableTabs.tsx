@@ -9,7 +9,7 @@ const ScrollableTabs: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const isMobile = useMediaQuery("(max-width:775px)");
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
@@ -17,9 +17,6 @@ const ScrollableTabs: React.FC = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleChangeTab = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
   const handleDrawerClose = () => {
     setMobileOpen(false);
   };
@@ -29,13 +26,13 @@ const ScrollableTabs: React.FC = () => {
       <AppBarComponent
         isMobile={isMobile}
         value={value}
-        handleChange={handleChange}
+        handleChange={handleTabChange}
         handleDrawerToggle={handleDrawerToggle}
       />
       <DrawerComponent
         value={value}
         onClose={handleDrawerClose}
-        handleChangeTab={handleChangeTab}
+        handleChangeTab={handleTabChange}
         mobileOpen={mobileOpen}
       />
       <ContentComponent value={value} />

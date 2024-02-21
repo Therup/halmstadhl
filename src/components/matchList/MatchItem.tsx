@@ -30,20 +30,16 @@ interface MatchProps {
 const MatchItem: React.FC<MatchProps> = ({ matches }) => {
   const { user } = useUser();
   const date = matches.date.toDate();
-  const formattedDate = date.toLocaleDateString("se-SE", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  });
+  const formattedDate = date.toISOString().split("T")[0];
 
   const handleDeleteMatch = async () => {
     if (user && user.isAdmin) {
       try {
         const matchId = matches.id;
         await FirebaseService.deleteMatch(matchId);
-        console.log("Match deleted successfully.");
+        console.log("Match raderad");
       } catch (error) {
-        console.error("Error deleting match:", error);
+        console.error("Error ta bort match", error);
       }
     }
   };
@@ -80,9 +76,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                     </Box>
                     <Box>{matches.result?.awayScore || 0}</Box>
                   </Box>
-                  <Box>
-                    
-                  </Box>
+                  <Box></Box>
                 </Box>
               </TableCell>
               <TableCell padding="none" style={{ width: "40%" }}>

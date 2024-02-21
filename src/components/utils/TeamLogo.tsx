@@ -24,7 +24,8 @@ const TeamLogo: React.FC<TeamLogoProps> = ({ teamName, size }) => {
       case "snuskhummers":
         return snuskhummers;
       default:
-        return "";
+        console.log("Ingen logga hittad");
+        return "X";
     }
   };
 

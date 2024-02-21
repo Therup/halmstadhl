@@ -62,6 +62,8 @@ const TeamTable: React.FC = () => {
     fetchData();
   }, []);
 
+  // Räknar upp poängen för varje lag. Kolla om laget gjort fler mål, mindre mål eller
+  // lika många mål som motståndaren, vinster = 1 * 3 oavgjort = 1
   const updateTeamStatistics = (
     teamMap: Map<string, any>,
     teamName: string,

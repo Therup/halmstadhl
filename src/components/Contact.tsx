@@ -10,7 +10,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    //
+    //Framtida funktionalitet
   };
 
   return (

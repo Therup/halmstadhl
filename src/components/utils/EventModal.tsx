@@ -8,7 +8,7 @@ import { useUser } from "./UserContext";
 interface EventModalProps {
   isOpen: boolean;
   onClose: () => void;
-  eventInfo: any; // Anpassa eventInfo-typen till din datastruktur för evenemang
+  eventInfo: any;
 }
 
 const EventModal: React.FC<EventModalProps> = ({
@@ -25,7 +25,6 @@ const EventModal: React.FC<EventModalProps> = ({
   const { user } = useUser();
 
   const [teams, setTeams] = useState<Team[]>([]);
-  console.log(teams);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,9 +43,8 @@ const EventModal: React.FC<EventModalProps> = ({
   if (!eventInfo) {
     return null; // Returnera ingenting om eventInfo är null
   }
-  const { id, homeScore, awayScore, homeTeam, awayTeam } = eventInfo;
-  const date = eventInfo.start;
-  const formattedDate = date.toISOString().split("T")[0];
+  const { id, homeScore, awayScore, homeTeam, awayTeam, start } = eventInfo;
+  const formattedDate = start.toISOString().split("T")[0];
 
   const handleUpdateMatch = async () => {
     try {

@@ -21,7 +21,7 @@ const Admin: React.FC = () => {
         localStorage.setItem("user", JSON.stringify(loggedInUser));
         // Använd useUser-hook för att uppdatera användarinformation globalt
         login(loggedInUser);
-        console.log("Inloggning lyckades! Användaren är administratör.");
+        console.log("Inloggning lyckades! Användaren är admin.");
       } else {
         console.log("Fel användarnamn eller lösenord.");
       }
