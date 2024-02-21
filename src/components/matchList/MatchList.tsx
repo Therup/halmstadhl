@@ -73,7 +73,7 @@ const Matches = () => {
         {isMobile ? (
           <TableContainer
             component={Paper}
-            style={{ width: "100%", minWidth: "375px" }}
+            style={{ width: "100%", minWidth: "395px" }}
           >
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "rgb(0, 44, 81)" }}>
@@ -81,7 +81,7 @@ const Matches = () => {
                   <TableCell
                     style={{
                       color: "white",
-                      width: "60%",
+                      width: "65%",
                       fontWeight: "bold",
                       textAlign: "center",
                       padding: 5,
@@ -91,7 +91,7 @@ const Matches = () => {
                     Resultat
                   </TableCell>
                   <TableCell
-                    style={{ color: "white", width: "40%", fontWeight: "bold" }}
+                    style={{ color: "white", width: "35%", fontWeight: "bold" }}
                     padding="none"
                   >
                     Datum

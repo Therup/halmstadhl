@@ -60,7 +60,7 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                   }}
                 >
                   <Box>
-                    <TeamLogo teamName={matches.awayTeam} size={50} />
+                    <TeamLogo teamName={matches.homeTeam} size={50} />
                   </Box>
 
                   <Box
@@ -75,6 +75,9 @@ const MatchItem: React.FC<MatchProps> = ({ matches }) => {
                       -
                     </Box>
                     <Box>{matches.result?.awayScore || 0}</Box>
+                  </Box>
+                  <Box>
+                    <TeamLogo teamName={matches.awayTeam} size={50} />
                   </Box>
                   <Box></Box>
                 </Box>
