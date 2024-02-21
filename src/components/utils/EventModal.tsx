@@ -44,7 +44,7 @@ const EventModal: React.FC<EventModalProps> = ({
     return null; // Returnera ingenting om eventInfo är null
   }
   const { id, homeScore, awayScore, homeTeam, awayTeam, start } = eventInfo;
-  const formattedDate = start.toISOString().split("T")[0];
+  const formattedDate = start.toLocaleDateString("sv-SE");
 
   const handleUpdateMatch = async () => {
     try {

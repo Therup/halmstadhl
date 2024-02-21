@@ -30,7 +30,7 @@ interface MatchProps {
 const MatchItem: React.FC<MatchProps> = ({ matches }) => {
   const { user } = useUser();
   const date = matches.date.toDate();
-  const formattedDate = date.toISOString().split("T")[0];
+  const formattedDate = date.toLocaleDateString("sv-SE");
 
   const handleDeleteMatch = async () => {
     if (user && user.isAdmin) {
