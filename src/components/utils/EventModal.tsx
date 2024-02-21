@@ -141,18 +141,25 @@ const EventModal: React.FC<EventModalProps> = ({
           </Box>
         )}
         {user && user.isAdmin && (
-          <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mt: 2,
+            }}
+          >
             <Select
               value={homeGoalScorer}
               onChange={(e) => setHomeGoalScorer(e.target.value as string)}
-              style={{ marginRight: "10px" }}
+              style={{ marginRight: "10px", width: "100px" }}
             >
               {teams
                 .find((team) => team.name === homeTeam)
                 ?.players.map((player) => (
-                  <MenuItem key={player} value={player}>
-                    {player}
-                  </MenuItem>
+                  <div key={player}>
+                    <MenuItem value={player}>{player}</MenuItem>
+                  </div>
                 ))}
             </Select>
             <TextField
@@ -165,13 +172,14 @@ const EventModal: React.FC<EventModalProps> = ({
             <Select
               value={awayGoalScorer}
               onChange={(e) => setAwayGoalScorer(e.target.value as string)}
+              style={{ marginRight: "10px", width: "100px" }}
             >
               {teams
                 .find((team) => team.name === awayTeam)
                 ?.players.map((player) => (
-                  <MenuItem key={player} value={player}>
-                    {player}
-                  </MenuItem>
+                  <div key={player}>
+                    <MenuItem value={player}>{player}</MenuItem>
+                  </div>
                 ))}
             </Select>
             <TextField
