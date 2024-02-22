@@ -5,7 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Match } from "../../FirebaseService";
 import TeamLogo from "../utils/TeamLogo";
 import { Box, useMediaQuery } from "@material-ui/core";
-import EventModal from "../utils/EventModal";
+import EventModal from "./EventModal";
 import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 
 const localizer = momentLocalizer(moment);
@@ -33,7 +33,6 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
   const handleCloseModal = () => {
     setSelectedEvent(null);
   };
-
   useEffect(() => {
     const eventsData = matches.map((match) => ({
       id: match.id,
@@ -44,6 +43,8 @@ const MyCalendar: React.FC<CalendarProps> = ({ matches }) => {
       awayTeam: match.awayTeam,
       homeScore: match.result.homeScore,
       awayScore: match.result.awayScore,
+      awayGoalScorers: match.awayGoalScorers,
+      homeGoalScorers: match.homeGoalScorers,
     }));
     setEvents(eventsData);
     // eslint-disable-next-line

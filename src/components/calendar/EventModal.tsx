@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Box, Typography, Button } from "@mui/material";
-import TeamLogo from "./TeamLogo";
+import TeamLogo from "../utils/TeamLogo";
 import { FirebaseService, Team } from "../../FirebaseService";
 import { MenuItem, Select, TextField } from "@material-ui/core";
-import { useUser } from "./UserContext";
+import { useUser } from "../utils/UserContext";
 
 interface EventModalProps {
   isOpen: boolean;
   onClose: () => void;
   eventInfo: any;
+}
+interface GoalScorer {
+  player: string;
+  goals: number;
 }
 
 const EventModal: React.FC<EventModalProps> = ({
@@ -43,7 +47,16 @@ const EventModal: React.FC<EventModalProps> = ({
   if (!eventInfo) {
     return null; // Returnera ingenting om eventInfo är null
   }
-  const { id, homeScore, awayScore, homeTeam, awayTeam, start } = eventInfo;
+  const {
+    id,
+    homeScore,
+    awayScore,
+    homeTeam,
+    awayTeam,
+    start,
+    homeGoalScorers,
+    awayGoalScorers,
+  } = eventInfo;
   const formattedDate = start.toLocaleDateString("sv-SE");
 
   const handleUpdateMatch = async () => {
@@ -101,6 +114,33 @@ const EventModal: React.FC<EventModalProps> = ({
           </Typography>
           <TeamLogo teamName={awayTeam} size={100} />
         </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: 2,
+          }}
+        >
+          <Box>
+            {homeGoalScorers.map((scorer: GoalScorer, index: number) => (
+              <div key={index}>
+                <Typography>
+                  {scorer.player} - {scorer.goals}
+                </Typography>
+              </div>
+            ))}
+          </Box>
+          <Box>
+            {awayGoalScorers.map((scorer: GoalScorer, index: number) => (
+              <div key={index}>
+                <Typography>
+                  {scorer.player} - {scorer.goals}
+                </Typography>
+              </div>
+            ))}
+          </Box>
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
           <Typography variant="body1" style={{ textAlign: "center" }}>
             Datum: {formattedDate}
@@ -155,13 +195,18 @@ const EventModal: React.FC<EventModalProps> = ({
               style={{ marginRight: "10px", width: "100px" }}
             >
               {teams
-                .find((team) => team.name === homeTeam)
+                .find((team) => team.name === awayTeam)
                 ?.players.map((player) => (
-                  <div key={player}>
-                    <MenuItem value={player}>{player}</MenuItem>
-                  </div>
+                  <MenuItem
+                    key={player}
+                    value={player}
+                    style={{ display: "block" }}
+                  >
+                    {player}
+                  </MenuItem>
                 ))}
             </Select>
+
             <TextField
               type="number"
               label="Mål"
@@ -177,11 +222,16 @@ const EventModal: React.FC<EventModalProps> = ({
               {teams
                 .find((team) => team.name === awayTeam)
                 ?.players.map((player) => (
-                  <div key={player}>
-                    <MenuItem value={player}>{player}</MenuItem>
-                  </div>
+                  <MenuItem
+                    key={player}
+                    value={player}
+                    style={{ display: "block" }}
+                  >
+                    {player}
+                  </MenuItem>
                 ))}
             </Select>
+
             <TextField
               type="number"
               label="Mål"

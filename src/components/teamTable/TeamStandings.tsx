@@ -46,7 +46,7 @@ const TeamStandings: React.FC = () => {
   }, []);
 
   // Räknar upp poängen för varje lag. Kolla om laget gjort fler mål, mindre mål eller
-  // lika många mål som motståndaren, vinster = 1 * 3 oavgjort = 1
+  // lika många mål som motståndaren, vinster = 1 * 2 oavgjort = 1
   const updateTeamStatistics = (
     teamMap: Map<string, any>,
     teamName: string,
@@ -79,7 +79,7 @@ const TeamStandings: React.FC = () => {
     } else {
       team.statistics.draws++;
     }
-    team.statistics.points = team.statistics.wins * 3 + team.statistics.draws;
+    team.statistics.points = team.statistics.wins * 2 + team.statistics.draws;
   };
 
   return (
