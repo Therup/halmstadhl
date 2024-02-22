@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { Box, Button, FormControl, TextField } from "@material-ui/core";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import PageTitle from "./utils/PageTitle";
+import PageTitle from "../utils/PageTitle";
 
 const AddTeamForm = () => {
   const [teamName, setTeamName] = useState<string>("");
