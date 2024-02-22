@@ -15,7 +15,6 @@ interface CarouselProps {
 }
 
 interface SliderSettings {
-  dots: boolean;
   infinite: boolean;
   speed: number;
   slidesToShow: number;
@@ -26,7 +25,6 @@ interface SliderSettings {
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const settings: SliderSettings = {
-    dots: true,
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
