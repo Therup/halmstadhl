@@ -31,7 +31,6 @@ const TeamTable: React.FC = () => {
         alignItems: "center",
       }}
     >
-      <Admin />
       {/* Knappar för att byta mellan tabell och skytteliga */}
       <Box style={{ marginBottom: "20px" }}>
         <Button

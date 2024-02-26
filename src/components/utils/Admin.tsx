@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FirebaseService } from "../../FirebaseService";
 import { useUser } from "./UserContext";
-import { Box, Button, TextField } from "@material-ui/core";
+import { Box, Button, TextField, Modal } from "@material-ui/core";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Admin: React.FC = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [openModal, setOpenModal] = useState(false); // State för att styra modalens synlighet
   const { user, login, logout } = useUser();
 
   const handleLogin = async () => {
@@ -42,6 +43,15 @@ const Admin: React.FC = () => {
       login(JSON.parse(loggedInUser));
     }
   }, []);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <Box
       className="mui-theme"
@@ -55,44 +65,71 @@ const Admin: React.FC = () => {
     >
       {user ? (
         <Box style={{ display: "flex", marginTop: "10px" }}>
-          <p>Inloggad som {user.UserName}</p>
           <Button
             className="custom-button"
             variant="contained"
             style={{
-              backgroundColor: "white",
+              marginLeft: "10px",
               padding: 1,
-              marginLeft: "20px",
-              marginTop: "8px",
-              height: "36px",
+              backgroundColor: "white",
+              fontWeight: "bold",
             }}
             onClick={handleLogout}
           >
-            <Box>Logga ut</Box> <ExitToAppIcon style={{ marginLeft: "5px" }} />
+            Logga ut
           </Button>
         </Box>
       ) : (
         <Box style={{ display: "flex", marginTop: "10px" }}>
-          <TextField
-            placeholder="Användarnamn"
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <TextField
-            placeholder="Lösenord"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
           <Button
             className="custom-button"
             variant="contained"
-            style={{ marginLeft: "10px", padding: 1, backgroundColor: "white" }}
-            onClick={handleLogin}
+            style={{
+              marginLeft: "10px",
+              padding: 1,
+              fontWeight: "bold",
+              backgroundColor: "white",
+            }}
+            onClick={handleOpenModal}
           >
             Login
           </Button>
+          <Modal open={openModal} onClose={handleCloseModal}>
+            <Box
+              style={{
+                position: "absolute",
+                width: 400,
+                backgroundColor: "white",
+                border: "2px solid #000",
+                boxShadow: "24px",
+                padding: "20px",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <TextField
+                placeholder="Användarnamn"
+                type="text"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <TextField
+                placeholder="Lösenord"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                className="custom-button"
+                variant="contained"
+                style={{ marginTop: "10px", backgroundColor: "white" }}
+                onClick={handleLogin}
+              >
+                Login
+              </Button>
+            </Box>
+          </Modal>
         </Box>
       )}
     </Box>

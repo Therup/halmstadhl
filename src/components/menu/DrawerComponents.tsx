@@ -5,6 +5,7 @@ import SportsHockeyIcon from "@mui/icons-material/SportsHockey";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
+import Admin from "../utils/Admin";
 
 interface DrawerProps {
   value: number;
@@ -31,6 +32,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
       }}
     >
       <div>
+        <Admin />
         <Tabs
           value={value}
           onChange={handleChangeTab}

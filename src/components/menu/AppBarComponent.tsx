@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, IconButton, Tab, Tabs } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
+import Admin from "../utils/Admin";
 
 interface AppBarProps {
   isMobile: boolean;
@@ -39,6 +40,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
           <Tab style={{ display: "inline-block" }} label="Matcher" />
           <Tab style={{ display: "inline-block" }} label="Lagen" />
           <Tab style={{ display: "inline-block" }} label="Kontakt" />
+          <Admin />
         </Tabs>
       )}
       {isMobile && (
