@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FirebaseService } from "../../FirebaseService";
 import PageTitle from "../utils/PageTitle";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
+import { Box, Card } from "@material-ui/core";
 
 interface GoalScorer {
   player: string;
@@ -47,20 +48,32 @@ const GoalScorers: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <PageTitle title="Skytteliga 23/24" icon={<EqualizerIcon />} />
-      <ol>
-        {/* Visa top 10 målskyttar */}
-        {goalScorers
-          .sort((a, b) => b.goals - a.goals)
-          .slice(0, 10)
-          .map((scorer, index) => (
-            <li key={index}>
-              {scorer.player} - {scorer.goals} mål
-            </li>
-          ))}
-      </ol>
-    </>
+    <Box>
+      <Box
+        style={{
+          textAlign: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        <PageTitle title="Skytteliga 23/24" icon={<EqualizerIcon />} />
+      </Box>
+
+      <Card style={{ padding: 5, minWidth: "375px" }}>
+        <ol>
+          {/* Visa top 10 målskyttar */}
+          {goalScorers
+            .sort((a, b) => b.goals - a.goals)
+            .slice(0, 10)
+            .map((scorer, index) => (
+              <li key={index}>
+                {scorer.player} - {scorer.goals} mål
+              </li>
+            ))}
+        </ol>
+      </Card>
+    </Box>
   );
 };
 export default GoalScorers;

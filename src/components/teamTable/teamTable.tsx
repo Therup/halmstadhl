@@ -25,13 +25,13 @@ const TeamTable: React.FC = () => {
 
   return (
     <Box
-      className="mui-theme "
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
+      <Admin />
       {/* Knappar för att byta mellan tabell och skytteliga */}
       <Box style={{ marginBottom: "20px" }}>
         <Button
@@ -124,7 +124,6 @@ const TeamTable: React.FC = () => {
           <GoalScorers />
         </Box>
       )}
-      <Admin />
       {user && user.isAdmin && <AddTeamForm />}
       <Box style={{ marginTop: "20px" }}>
         <Carousel images={images} />

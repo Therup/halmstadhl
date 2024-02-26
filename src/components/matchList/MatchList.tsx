@@ -45,14 +45,13 @@ const Matches = () => {
 
   return (
     <Box
-      className="mui-theme"
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      <PageTitle title="Spelade matcher" icon={<SportsHockeyIcon />} />
+      <PageTitle title="Matcher" icon={<SportsHockeyIcon />} />
       <Box style={{ marginBottom: "10px" }}>
         <Button
           variant={showPlayedMatches ? "contained" : "outlined"}

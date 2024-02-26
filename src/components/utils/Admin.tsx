@@ -49,6 +49,8 @@ const Admin: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        margin: "10px",
+        marginTop: "0px",
       }}
     >
       {user ? (

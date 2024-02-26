@@ -3,6 +3,9 @@ import MyCalendar from "./MyCalendar";
 import { FirebaseService, Match } from "../../FirebaseService";
 import MatchForm from "./CreateMatchFormForCalendar";
 import { useUser } from "../utils/UserContext";
+import PageTitle from "../utils/PageTitle";
+import CalendarMonth from "@mui/icons-material/CalendarMonth";
+import { Box } from "@material-ui/core";
 
 const CalendarPage: React.FC = () => {
   const [matches, setMatches] = useState<Match[]>([]);
@@ -22,10 +25,20 @@ const CalendarPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ paddingTop: "30px" }}>
+    <Box>
+      <Box
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <PageTitle icon={<CalendarMonth />} title="Kalender" />
+      </Box>
+
       <MyCalendar matches={matches} />
       {user && user.isAdmin && <MatchForm />}
-    </div>
+    </Box>
   );
 };
 

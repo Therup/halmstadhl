@@ -2,8 +2,6 @@ import React from "react";
 import { Box, Container } from "@material-ui/core";
 import TeamTable from "../teamTable/teamTable";
 import Matches from "../matchList/MatchList";
-import Admin from "../utils/Admin";
-import RandomStringGenerator from "../RandomStringGenerator";
 import ContactForm from "../Contact";
 import CalendarPage from "../calendar/CalendarPage";
 import TeamsComponent from "../teams/TeamsComponent";

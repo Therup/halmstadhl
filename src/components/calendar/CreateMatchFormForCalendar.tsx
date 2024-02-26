@@ -82,71 +82,79 @@ const MatchForm: React.FC = ({}) => {
   return (
     <Box mt={2}>
       <form onSubmit={handleSubmit}>
-        <InputLabel>Hemmalag </InputLabel>
-        <Select
-          style={{ width: "150px" }}
-          value={homeTeam}
-          required
-          onChange={handleHomeTeamChange}
-        >
-          <option value="">Välj hemmalag</option>
-          {teams.map((team) => (
-            <option key={team.name} value={team.name}>
-              {team.name}
-            </option>
-          ))}
-        </Select>
-        <TextField
-          placeholder="Mål hemmalag"
-          type="number"
-          value={homeScore}
-          onChange={(e) => setHomeScore(Number(e.target.value))}
-        />
+        <Box>
+          <InputLabel>Hemmalag </InputLabel>
+          <Select
+            style={{ width: "150px" }}
+            value={homeTeam}
+            required
+            onChange={handleHomeTeamChange}
+          >
+            <option value="">Välj hemmalag</option>
+            {teams.map((team) => (
+              <option key={team.name} value={team.name}>
+                {team.name}
+              </option>
+            ))}
+          </Select>
+          <TextField
+            placeholder="Mål hemmalag"
+            type="number"
+            value={homeScore}
+            onChange={(e) => setHomeScore(Number(e.target.value))}
+          />
+        </Box>
 
-        <InputLabel>Bortalag</InputLabel>
-        <Select
-          style={{ width: "150px" }}
-          value={awayTeam}
-          required
-          onChange={handleAwayTeamChange}
-        >
-          <option value="">Välj bortalag</option>
-          {teams.map((team) => (
-            <option key={team.name} value={team.name}>
-              {team.name}
-            </option>
-          ))}
-        </Select>
+        <Box style={{ marginTop: "10px" }}>
+          {" "}
+          <InputLabel>Bortalag</InputLabel>
+          <Select
+            style={{ width: "150px" }}
+            value={awayTeam}
+            required
+            onChange={handleAwayTeamChange}
+          >
+            <option value="">Välj bortalag</option>
+            {teams.map((team) => (
+              <option key={team.name} value={team.name}>
+                {team.name}
+              </option>
+            ))}
+          </Select>
+          <TextField
+            placeholder="Mål bortalaglag"
+            type="number"
+            value={awayScore}
+            onChange={(e) => setAwayScore(Number(e.target.value))}
+          />
+        </Box>
 
-        <TextField
-          placeholder="Mål bortalaglag"
-          type="number"
-          value={awayScore}
-          onChange={(e) => setAwayScore(Number(e.target.value))}
-        />
-        <TextField
-          label="Datum"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          style={{
-            marginTop: "10px",
-            padding: "5px",
-            backgroundColor: "white",
-          }}
-        >
-          Skapa Match
-        </Button>
+        <Box>
+          <TextField
+            label="Datum"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+            style={{ width: "200px" }}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            style={{
+              marginTop: "28px",
+              marginLeft: "10px",
+              padding: "5px",
+              backgroundColor: "white",
+            }}
+          >
+            Skapa Match
+          </Button>
+        </Box>
       </form>
     </Box>
   );
