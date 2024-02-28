@@ -135,6 +135,7 @@ const TeamsComponent: React.FC = ({}) => {
               value={newPlayerName}
               onChange={(e) => setNewPlayerName(e.target.value)}
               variant="outlined"
+              style={{ maxWidth: "225px" }}
               size="small"
             />
             <Button

@@ -117,12 +117,14 @@ const Admin: React.FC = () => {
                 placeholder="Användarnamn"
                 type="text"
                 value={userName}
+                style={{ maxWidth: "185px" }}
                 onChange={(e) => setUserName(e.target.value)}
               />
               <TextField
                 placeholder="Lösenord"
                 type="password"
                 value={password}
+                style={{ maxWidth: "185px" }}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Button
