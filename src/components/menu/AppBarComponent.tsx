@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, IconButton, Tab, Tabs } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import Admin from "../utils/Admin";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 
 interface AppBarProps {
   isMobile: boolean;
@@ -31,9 +32,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
           onChange={handleChange}
           scrollButtons="auto"
           centered
-          style={{
-            color: "white",
-          }}
+          style={{ color: "white" }}
         >
           <Tab style={{ display: "inline-block" }} label="Tabell" />
           <Tab style={{ display: "inline-block" }} label="Kalender" />

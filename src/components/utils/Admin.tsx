@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FirebaseService } from "../../FirebaseService";
 import { useUser } from "./UserContext";
-import { Box, Button, TextField, Modal } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  TextField,
+  Modal,
+  useMediaQuery,
+} from "@material-ui/core";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Admin: React.FC = () => {
@@ -9,6 +15,7 @@ const Admin: React.FC = () => {
   const [password, setPassword] = useState("");
   const [openModal, setOpenModal] = useState(false); // State för att styra modalens synlighet
   const { user, login, logout } = useUser();
+  const isMobile = useMediaQuery("(max-width:775px)");
 
   const handleLogin = async () => {
     try {
@@ -65,14 +72,13 @@ const Admin: React.FC = () => {
     >
       {user ? (
         <Box style={{ display: "flex", marginTop: "10px" }}>
+          <ExitToAppIcon />
           <Button
             className="custom-button"
-            variant="contained"
             style={{
-              marginLeft: "10px",
               padding: 1,
-              backgroundColor: "white",
-              fontWeight: "bold",
+              color: isMobile ? "#000" : "#f0f0f0",
+              fontWeight: isMobile ? "bold" : "default",
             }}
             onClick={handleLogout}
           >
@@ -81,14 +87,13 @@ const Admin: React.FC = () => {
         </Box>
       ) : (
         <Box style={{ display: "flex", marginTop: "10px" }}>
+          <ExitToAppIcon />
           <Button
             className="custom-button"
-            variant="contained"
             style={{
-              marginLeft: "10px",
               padding: 1,
-              fontWeight: "bold",
-              backgroundColor: "white",
+              color: isMobile ? "#000" : "#f0f0f0",
+              fontWeight: isMobile ? "bold" : "default",
             }}
             onClick={handleOpenModal}
           >

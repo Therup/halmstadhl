@@ -40,7 +40,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({
           indicatorColor="primary"
           orientation="vertical"
           variant="scrollable"
-          style={{ paddingLeft: 0 }}
+          style={{ paddingLeft: 0, color: "black" }}
         >
           <Tab
             label={
