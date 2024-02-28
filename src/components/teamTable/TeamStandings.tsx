@@ -32,9 +32,19 @@ const TeamStandings: React.FC = () => {
 
         const teamsData = Array.from(teamStatisticsMap.values());
 
-        const sortedTeams = teamsData.sort(
-          (a, b) => b.statistics.points - a.statistics.points
-        );
+        const sortedTeams = teamsData.sort((a, b) => {
+          // Sortera efter poäng
+          if (b.statistics.points !== a.statistics.points) {
+            return b.statistics.points - a.statistics.points;
+          } else {
+            // Om poängen är samma, sortera efter målskillnad
+            const goalDifferenceA =
+              a.statistics.goalsScored - a.statistics.goalsConceded;
+            const goalDifferenceB =
+              b.statistics.goalsScored - b.statistics.goalsConceded;
+            return goalDifferenceB - goalDifferenceA;
+          }
+        });
 
         setTeams(sortedTeams);
       } catch (error) {

@@ -10,6 +10,7 @@ interface EventModalProps {
   onClose: () => void;
   eventInfo: any;
 }
+
 interface GoalScorer {
   player: string;
   goals: number;
@@ -27,36 +28,26 @@ const EventModal: React.FC<EventModalProps> = ({
   const [homeGoals, setHomeGoals] = useState<number>(0);
   const [awayGoals, setAwayGoals] = useState<number>(0);
   const { user } = useUser();
-
   const [teams, setTeams] = useState<Team[]>([]);
+  const [homeGoalScorers, setHomeGoalScorers] = useState<GoalScorer[]>([]);
+  const [awayGoalScorers, setAwayGoalScorers] = useState<GoalScorer[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const teamsData = await FirebaseService.getTeams();
-
         setTeams(teamsData);
       } catch (error) {
         console.error("Fel vid hämtning av matchdata:", error);
       }
     };
-
     fetchData();
   }, []);
 
   if (!eventInfo) {
     return null; // Returnera ingenting om eventInfo är null
   }
-  const {
-    id,
-    homeScore,
-    awayScore,
-    homeTeam,
-    awayTeam,
-    start,
-    homeGoalScorers,
-    awayGoalScorers,
-  } = eventInfo;
+  const { id, homeScore, awayScore, homeTeam, awayTeam, start } = eventInfo;
   const formattedDate = start.toLocaleDateString("sv-SE");
 
   const handleUpdateMatch = async () => {
@@ -67,13 +58,33 @@ const EventModal: React.FC<EventModalProps> = ({
           awayScore: newAwayScore,
         },
         isPlayed: true,
-        homeGoalScorers: [{ player: homeGoalScorer, goals: homeGoals }],
-        awayGoalScorers: [{ player: awayGoalScorer, goals: awayGoals }],
+        homeGoalScorers,
+        awayGoalScorers,
       });
       onClose();
     } catch (error) {
       console.error("Error updating match:", error);
     }
+  };
+
+  const handleAddHomeGoalScorer = () => {
+    const updatedHomeGoalScorers = [
+      ...homeGoalScorers,
+      { player: homeGoalScorer, goals: homeGoals },
+    ];
+    setHomeGoalScorers(updatedHomeGoalScorers);
+    setHomeGoalScorer("");
+    setHomeGoals(0);
+  };
+
+  const handleAddAwayGoalScorer = () => {
+    const updatedAwayGoalScorers = [
+      ...awayGoalScorers,
+      { player: awayGoalScorer, goals: awayGoals },
+    ];
+    setAwayGoalScorers(updatedAwayGoalScorers);
+    setAwayGoalScorer("");
+    setAwayGoals(0);
   };
 
   return (
@@ -195,7 +206,7 @@ const EventModal: React.FC<EventModalProps> = ({
               style={{ marginRight: "10px", width: "100px" }}
             >
               {teams
-                .find((team) => team.name === awayTeam)
+                .find((team) => team.name === homeTeam)
                 ?.players.map((player) => (
                   <MenuItem
                     key={player}
@@ -214,6 +225,10 @@ const EventModal: React.FC<EventModalProps> = ({
               onChange={(e) => setHomeGoals(Number(e.target.value))}
               style={{ marginRight: "10px", width: "80px" }}
             />
+            <Button onClick={handleAddHomeGoalScorer}>
+              Lägg till målskytt
+            </Button>
+
             <Select
               value={awayGoalScorer}
               onChange={(e) => setAwayGoalScorer(e.target.value as string)}
@@ -239,6 +254,9 @@ const EventModal: React.FC<EventModalProps> = ({
               onChange={(e) => setAwayGoals(Number(e.target.value))}
               style={{ marginRight: "10px", width: "80px" }}
             />
+            <Button onClick={handleAddAwayGoalScorer}>
+              Lägg till målskytt
+            </Button>
           </Box>
         )}
         <Box
