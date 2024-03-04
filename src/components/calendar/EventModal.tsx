@@ -4,6 +4,7 @@ import TeamLogo from "../utils/TeamLogo";
 import { FirebaseService, Team } from "../../FirebaseService";
 import { MenuItem, Select, TextField } from "@material-ui/core";
 import { useUser } from "../utils/UserContext";
+import GoalScorers from "../teamTable/GoalScorers";
 
 interface EventModalProps {
   isOpen: boolean;
@@ -86,7 +87,6 @@ const EventModal: React.FC<EventModalProps> = ({
     setAwayGoalScorer("");
     setAwayGoals(0);
   };
-
   return (
     <Modal open={isOpen} onClose={onClose}>
       <Box
@@ -134,22 +134,26 @@ const EventModal: React.FC<EventModalProps> = ({
           }}
         >
           <Box>
-            {homeGoalScorers.map((scorer: GoalScorer, index: number) => (
-              <div key={index}>
-                <Typography>
-                  {scorer.player} - {scorer.goals}
-                </Typography>
-              </div>
-            ))}
+            {eventInfo.homeGoalScorers.map(
+              (scorer: GoalScorer, index: number) => (
+                <div key={index}>
+                  <Typography>
+                    {scorer.player} - {scorer.goals}
+                  </Typography>
+                </div>
+              )
+            )}
           </Box>
           <Box>
-            {awayGoalScorers.map((scorer: GoalScorer, index: number) => (
-              <div key={index}>
-                <Typography>
-                  {scorer.player} - {scorer.goals}
-                </Typography>
-              </div>
-            ))}
+            {eventInfo.awayGoalScorers.map(
+              (scorer: GoalScorer, index: number) => (
+                <div key={index}>
+                  <Typography>
+                    {scorer.player} - {scorer.goals}
+                  </Typography>
+                </div>
+              )
+            )}
           </Box>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
